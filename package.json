@@ -4,6 +4,8 @@
   "description": "Common components for node-web projects",
   "scripts": {
     "test": "echo \"ok\"",
+    "codecheck": "standard",
+    "codefix": "standard --fix",
     "test-debug": "node_modules/mocha/bin/mocha --debug-brk test/**/test-*.js",
     "preversion": "standard && npm run test",
     "postversion": "git push && git push --tags"
@@ -17,7 +19,7 @@
     "nodejs",
     "web"
   ],
-  "author": "Sebastian Ware <sebastian@urbantalk.se> (https://github.com/jhsware)",
+  "author": "KTH",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/KTH/kth-node-web-common/issues"
@@ -25,18 +27,16 @@
   "homepage": "https://github.com/KTH/kth-node-web-common#readme",
   "dependencies": {
     "entities": "^1.1.1",
-    "handlebars": "^4.0.6",
-    "kth-node-cortina-block": "^1.0.4",
-    "kth-node-redis": "^1.2.2",
+    "handlebars": "^4.0.12",
+    "kth-node-cortina-block": "^2.0.0",
+    "kth-node-redis": "^2.0.0",
     "locale": "^0.1.0"
   },
   "peerDependencies": {
     "kth-node-i18n": "^1.0.2",
-    "kth-node-log": "^2.0.0"
+    "kth-node-log": "^3.0.2"
   },
   "devDependencies": {
-    "chai": "^3.5.0",
-    "mocha": "^3.3.0",
-    "standard": "^10.0.2"
+    "standard": "^12.0.1"
   }
 }
