@@ -28,7 +28,7 @@
   "dependencies": {
     "entities": "^1.1.1",
     "handlebars": "^4.0.12",
-    "kth-node-cortina-block": "^2.0.0",
+    "kth-node-cortina-block": "^2.1.0",
     "kth-node-redis": "^2.0.0",
     "locale": "^0.1.0"
   },
