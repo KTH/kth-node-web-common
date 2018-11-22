@@ -1,6 +1,6 @@
 {
   "name": "kth-node-web-common",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Common components for node-web projects",
   "scripts": {
     "test": "echo \"ok\"",
@@ -27,12 +27,12 @@
   "homepage": "https://github.com/KTH/kth-node-web-common#readme",
   "dependencies": {
     "entities": "^1.1.2",
-    "handlebars": "^4.0.12",
     "kth-node-cortina-block": "^2.2.0",
     "kth-node-redis": "^2.0.0",
     "locale": "^0.1.0"
   },
   "peerDependencies": {
+    "handlebars": "^4.0.12",
     "kth-node-i18n": "^1.0.2",
     "kth-node-log": "^3.0.2"
   },
