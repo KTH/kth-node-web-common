@@ -70,3 +70,21 @@ const language = require('kth-node-web-common/lib/language')
 const lang = language.getLanguage(res)
 
 ```
+
+## Views
+In lib/handlebars/pages you will find common handlebar pages that can be used in your node app.
+
+### Error
+
+Error page for 404 or 500.
+
+A gulp task helps with importing it to your project.
+
+Set it up and run on build. Setup example:
+
+```JavaScript
+const { moveHandlebarPages } = require('kth-node-web-common/gulp')
+
+gulp.task('moveHandlebarPages', moveHandlebarPages)
+
+```
