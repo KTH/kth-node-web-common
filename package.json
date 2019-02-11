@@ -27,14 +27,18 @@
   "homepage": "https://github.com/KTH/kth-node-web-common#readme",
   "dependencies": {
     "entities": "^1.1.2",
+    "gulp": "^3.9.0",
     "kth-node-cortina-block": "^3.0.0",
     "kth-node-redis": "^2.0.0",
-    "locale": "^0.1.0"
+    "locale": "^0.1.0",
+    "merge-stream": "^1.0.1"
   },
   "peerDependencies": {
     "handlebars": "^4.0.12",
     "kth-node-i18n": "^1.0.2",
-    "kth-node-log": "^3.0.2"
+    "kth-node-log": "^3.0.2",
+    "gulp": "^3.0.0",
+    "merge-stream": "1.0.1"
   },
   "devDependencies": {
     "standard": "^12.0.1"
