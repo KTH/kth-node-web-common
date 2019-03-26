@@ -88,3 +88,11 @@ const { moveHandlebarPages } = require('kth-node-web-common/gulp')
 gulp.task('moveHandlebarPages', moveHandlebarPages)
 
 ```
+
+Remember to add the files to your .gitignore, they should not be pushed to your repo since they are added on build.
+
+```
+# KTH Node Web Common imported files
+server/views/system/error.handlebars
+server/views/layouts/errorLayout.handlebars
+```
