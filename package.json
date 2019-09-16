@@ -1,6 +1,6 @@
 {
   "name": "kth-node-web-common",
-  "version": "3.0.6",
+  "version": "4.0.0",
   "description": "Common components for node-web projects",
   "scripts": {
     "test": "echo \"ok\"",
@@ -8,7 +8,8 @@
     "codefix": "standard --fix",
     "test-debug": "node_modules/mocha/bin/mocha --debug-brk test/**/test-*.js",
     "preversion": "standard && npm run test",
-    "postversion": "git push && git push --tags"
+    "postversion": "git push && git push --tags",
+    "build": "npm test"
   },
   "repository": {
     "type": "git",
@@ -19,28 +20,31 @@
     "nodejs",
     "web"
   ],
-  "author": "KTH",
+  "author": {
+    "name": "KTH",
+    "email": "infosys@kth.se"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/KTH/kth-node-web-common/issues"
   },
   "homepage": "https://github.com/KTH/kth-node-web-common#readme",
   "dependencies": {
-    "entities": "^1.1.2",
+    "entities": "^2.0.0",
     "gulp": "^4.0.2",
-    "kth-node-cortina-block": "^3.0.0",
-    "kth-node-redis": "^2.0.0",
+    "kth-node-cortina-block": "^3.0.5",
+    "kth-node-redis": "^2.0.1",
     "locale": "^0.1.0",
-    "merge-stream": "^1.0.1"
+    "merge-stream": "^2.0.0"
   },
   "peerDependencies": {
-    "handlebars": "^4.0.12",
+    "gulp": "^4.0.2",
+    "handlebars": "^4.2.0",
     "kth-node-i18n": "^1.0.2",
     "kth-node-log": "^3.0.2",
-    "gulp": "^3.0.0",
-    "merge-stream": "1.0.1"
+    "merge-stream": "2.0.0"
   },
   "devDependencies": {
-    "standard": "^12.0.1"
+    "standard": "^14.3.0"
   }
 }
