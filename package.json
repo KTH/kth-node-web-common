@@ -1,6 +1,6 @@
 {
   "name": "kth-node-web-common",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "description": "Common components for node-web projects",
   "scripts": {
     "test": "echo \"ok\"",
@@ -32,19 +32,19 @@
   "dependencies": {
     "entities": "^2.0.0",
     "gulp": "^4.0.2",
-    "kth-node-cortina-block": "^3.0.5",
-    "kth-node-redis": "^2.0.1",
+    "kth-node-cortina-block": "^3.0.7",
+    "kth-node-redis": "^3.0.4",
     "locale": "^0.1.0",
     "merge-stream": "^2.0.0"
   },
   "peerDependencies": {
     "gulp": "^4.0.2",
-    "handlebars": "^4.2.0",
+    "handlebars": "^4.7.6",
     "kth-node-i18n": "^1.0.2",
     "kth-node-log": "^3.0.2",
     "merge-stream": "2.0.0"
   },
   "devDependencies": {
-    "standard": "^14.3.0"
+    "standard": "^14.3.3"
   }
 }
