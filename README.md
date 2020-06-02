@@ -1,6 +1,6 @@
-## Handlebar Helpers ##
+## Handlebar Helpers
 
-This is a set of standard helpers needed in most KTH node-web projects. 
+This is a set of standard helpers needed in most KTH node-web projects.
 
 Register helpers:
 
@@ -21,7 +21,7 @@ Usage in templates:
 - {{ prefixStyle url name media }} -- add a style tag for named media type with version set to style block **name**
 - {{ render name }} -- used by a layout to render script and style blocks in appropriate places
 
-## Cortina Blocks ##
+## Cortina Blocks
 
 Express middleware to fetch Cortina CMS blocks for requests with layouts requiring them:
 
@@ -42,7 +42,8 @@ route.use('/app/mount/point', require('kth-node-web-common/lib/web/cortina')({
 }))
 ```
 
-## Crawler Redirect ##
+## Crawler Redirect
+
 Middleware to handle redirects for crawlers.
 
 ```JavaScript
@@ -53,7 +54,8 @@ server.use(excludeExpression, require('kth-node-web-common/lib/web/crawlerRedire
 }))
 ```
 
-## Language ##
+## Language
+
 Middleware and helper methods to set and get language for this request.
 
 Register the middleware:
@@ -72,20 +74,37 @@ const lang = language.getLanguage(res)
 ```
 
 ## Views
+
 In lib/handlebars/pages you will find common handlebar pages that can be used in your node app.
 
 ### Error
 
-Error page for 404 or 500.
+Error page for 404 or 500. It is recommended to use shell script to coy the files like the examples below.
+Note this package no longer provdes gulp tasks to copy the files.
 
-A gulp task helps with importing it to your project.
-
-Set it up and run on build. Setup example:
+Example in package.json script:
 
 ```JavaScript
-const { moveHandlebarPages } = require('kth-node-web-common/gulp')
+"scripts": {
+  "build": "NODE_ENV=production npm run move-handlebar-pages && rm -rf dist && npm run app && npm run vendor",
+   ...
+ "move-handlebar-pages": "cp ./node_modules/kth-node-web-common/lib/handlebars/pages/views/error.handlebars ./server/views/system/error.handlebars && cp ./node_modules/kth-node-web-common/lib/handlebars/pages/layouts/errorLayout.handlebars ./server/views/layouts/errorLayout.handlebars"
+```
 
-gulp.task('moveHandlebarPages', moveHandlebarPages)
+Alternative way if using dedicated build script:
+
+```
+# Ensure  target folder structure
+echo -e "     -> Creating the server/view folder structure"
+mkdir -p ./server/views/system ./server/views/layouts
+
+# Copy error.handlebars page to this project
+echo -e "     -> Copying error.handlebars to server/views/system folder"
+cp ./node_modules/kth-node-web-common/lib/handlebars/pages/views/error.handlebars server/views/system
+
+# Copy errorLayout.handlebars layout to this project
+echo -e "     -> Copying errorLayout.handlebars to server/views/layouts folder"
+cp ./node_modules/kth-node-web-common/lib/handlebars/pages/layouts/errorLayout.handlebars server/views/layouts
 
 ```
 
