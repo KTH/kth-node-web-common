@@ -1,13 +1,12 @@
 {
   "name": "kth-node-web-common",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "description": "Common components for node-web projects",
   "scripts": {
     "test": "echo \"ok\"",
-    "codecheck": "standard",
-    "codefix": "standard --fix",
-    "test-debug": "node_modules/mocha/bin/mocha --debug-brk test/**/test-*.js",
-    "preversion": "standard && npm run test",
+    "linting": "eslint .",
+    "linting:fix": "eslint . --fix",
+    "preversion": "eslint . && npm run test",
     "postversion": "git push && git push --tags",
     "build": "npm test"
   },
@@ -34,15 +33,108 @@
     "handlebars": "^4.7.6",
     "kth-node-cortina-block": "^3.0.7",
     "kth-node-i18n": "^1.0.2",
+    "kth-node-log": "^3.1.0",
     "kth-node-redis": "^3.1.5",
     "locale": "^0.1.0"
   },
-  "peerDependencies": {
-    "handlebars": "^4.7.6",
-    "kth-node-i18n": "^1.0.2",
-    "kth-node-log": "^3.1.0"
-  },
   "devDependencies": {
-    "standard": "^14.3.4"
+    "@types/jest": "^26.0.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.3.1",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.21.2",
+    "eslint-plugin-jest": "^23.17.1",
+    "eslint-plugin-prettier": "^3.1.4",
+    "jest": "^26.1.0",
+    "jest-extended": "^0.11.5",
+    "prettier": "^2.0.5"
+  },
+  "// (prettier)": "configuration version 2020-06-15 - might also reside in .prettierrc.json",
+  "prettier": {
+    "arrowParens": "avoid",
+    "printWidth": 120,
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
+  "// (eslint)": "configuration version 2020-06-15 (API+NPM) - might also reside in .eslintrc.json",
+  "eslintConfig": {
+    "env": {
+      "node": true,
+      "jest/globals": true
+    },
+    "extends": [
+      "airbnb-base",
+      "prettier"
+    ],
+    "parser": "babel-eslint",
+    "parserOptions": {
+      "ecmaFeatures": {
+        "classes": true,
+        "impliedStrict": true
+      },
+      "ecmaVersion": 2018,
+      "sourceType": "module"
+    },
+    "plugins": [
+      "prettier",
+      "jest"
+    ],
+    "rules": {
+      "import/extensions": "off",
+      "import/newline-after-import": "off",
+      "import/order": "off",
+      "no-plusplus": "off",
+      "no-restricted-syntax": "off",
+      "no-underscore-dangle": "off",
+      "prefer-template": "off",
+      "prettier/prettier": [
+        "error"
+      ],
+      "radix": "off",
+      "semi": [
+        "error",
+        "never"
+      ],
+      "sort-imports": [
+        "error",
+        {
+          "ignoreCase": true,
+          "ignoreDeclarationSort": true,
+          "ignoreMemberSort": true,
+          "memberSyntaxSortOrder": [
+            "all",
+            "single",
+            "multiple",
+            "none"
+          ]
+        }
+      ],
+      "space-before-function-paren": [
+        "error",
+        {
+          "anonymous": "always",
+          "named": "never",
+          "asyncArrow": "always"
+        }
+      ],
+      "strict": "off",
+      "global-require": "off",
+      "no-await-in-loop": "off",
+      "no-param-reassign": "off",
+      "consistent-return": "off",
+      "array-callback-return": "off"
+    }
+  },
+  "// (jest)": "configuration version 2020-06-15 (API+NPM) - might also reside as module.exports in jest.config.js",
+  "jest": {
+    "clearMocks": true,
+    "notifyMode": "failure-change",
+    "setupFilesAfterEnv": [
+      "jest-extended"
+    ],
+    "testEnvironment": "node",
+    "verbose": true
   }
 }
