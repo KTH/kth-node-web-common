@@ -1,6 +1,6 @@
 {
   "name": "kth-node-web-common",
-  "version": "5.0.1",
+  "version": "5.1.0",
   "description": "Common components for node-web projects",
   "scripts": {
     "test": "echo \"ok\"",
@@ -29,24 +29,24 @@
   },
   "homepage": "https://github.com/KTH/kth-node-web-common#readme",
   "dependencies": {
-    "entities": "^2.0.2",
+    "entities": "^2.0.3",
     "handlebars": "^4.7.6",
-    "kth-node-cortina-block": "^3.0.7",
+    "kth-node-cortina-block": "^3.1.0",
     "kth-node-i18n": "^1.0.2",
     "kth-node-log": "^3.1.0",
-    "kth-node-redis": "^3.1.5",
+    "kth-node-redis": "^3.1.6",
     "locale": "^0.1.0"
   },
   "devDependencies": {
-    "@types/jest": "^26.0.0",
+    "@types/jest": "^26.0.9",
     "babel-eslint": "^10.1.0",
-    "eslint": "^7.3.1",
+    "eslint": "^7.6.0",
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-config-prettier": "^6.11.0",
-    "eslint-plugin-import": "^2.21.2",
-    "eslint-plugin-jest": "^23.17.1",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jest": "^23.20.0",
     "eslint-plugin-prettier": "^3.1.4",
-    "jest": "^26.1.0",
+    "jest": "^26.3.0",
     "jest-extended": "^0.11.5",
     "prettier": "^2.0.5"
   },
