@@ -2,6 +2,7 @@
   "name": "kth-node-web-common",
   "version": "5.1.2",
   "description": "Common components for node-web projects",
+  "automaticPublish": "true",
   "scripts": {
     "test": "echo \"ok\"",
     "linting": "eslint .",
