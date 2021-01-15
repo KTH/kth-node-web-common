@@ -32,7 +32,7 @@
   "dependencies": {
     "entities": "^2.0.3",
     "handlebars": "^4.7.6",
-    "kth-node-cortina-block": "^3.1.2",
+    "kth-node-cortina-block": "^3.1.4",
     "kth-node-i18n": "^1.0.3",
     "kth-node-log": "^3.1.2",
     "kth-node-redis": "^3.1.6",
