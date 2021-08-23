@@ -116,3 +116,46 @@ Remember to add the files to your .gitignore, they should not be pushed to your 
 server/views/system/error.handlebars
 server/views/layouts/errorLayout.handlebars
 ```
+
+# Changes in version 6
+
+Here is a small migration guide if your application is build from the node-web template.
+
+## Include common error messages from the package into your application
+
+In your application, add the following into your `i18n/index.js`
+
+```JavaScript
+// Include error messages from kth-node-web-common package
+const errorMessagesEnglish = require('kth-node-web-common/lib/i18n/errorMessages.en')
+const errorMessagesSwedish = require('kth-node-web-common/lib/i18n/errorMessages.sv')
+
+// Include application messasges
+const messagesEnglish = require('./messages.en')
+const messagesSwedish = require('./messages.se')
+
+// Add the error messages to the application defined messages before pushing them.
+messagesSwedish.messages = { ...messagesSwedish.messages, ...errorMessagesSwedish.messages }
+messagesEnglish.messages = { ...messagesEnglish.messages, ...errorMessagesEnglish.messages }
+
+```
+
+## Use the function from the `kth-node-web-common` package in the apllication systemCtrl.js
+
+Do the following changes in your `/server/controller/systemCtrl.js`
+
+1. Include the error handler
+
+```JavaScript
+const errorHandler = require('kth-node-web-common/lib/error')
+```
+
+2. Remove the `\_getFriendlyErrorMessage` method.
+3. In the `\_final` method, add the following code after the declaration of `lang` variable:
+
+```JavaScript
+// Use error pages from kth-node-web-common based on given parameters.
+errorHandler.renderErrorPage(res, req, statusCode, i18n, isProd, lang, err)
+```
+
+3. Remove the switch and `res.format` code.
