@@ -159,3 +159,4 @@ errorHandler.renderErrorPage(res, req, statusCode, i18n, isProd, lang, err)
 ```
 
 3. Remove the switch and `res.format` code.
+4. Remove unused error labels the messages files `/i18n/messages.en.js` and `/i18n/messages.sv.js`
