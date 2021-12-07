@@ -1,12 +1,12 @@
 {
-  "name": "kth-node-web-common",
-  "version": "6.0.0",
+  "name": "@kth/kth-node-web-common",
+  "version": "7.0.0",
   "description": "Common components for node-web projects",
   "automaticPublish": "true",
   "scripts": {
     "test": "echo \"ok\"",
-    "linting": "eslint .",
-    "linting:fix": "eslint . --fix",
+    "lint": "eslint . --quiet",
+    "lint-v": "eslint .",
     "build": "npm test",
     "prepare": "bash -c 'if [ -f ./node_modules/.bin/husky ]; then husky install; fi'"
   },
@@ -29,23 +29,22 @@
   },
   "homepage": "https://github.com/KTH/kth-node-web-common#readme",
   "dependencies": {
+    "@kth/kth-node-cortina-block": "^4.0.0",
     "entities": "^2.2.0",
     "handlebars": "^4.7.7",
-    "kth-node-cortina-block": "^3.1.10",
     "kth-node-i18n": "^1.0.12",
     "kth-node-log": "^3.1.10",
     "kth-node-redis": "^3.1.35",
     "locale": "^0.1.0"
   },
   "devDependencies": {
-    "@kth/eslint-config-kth": "^2.0.1",
-    "@types/jest": "^27.0.2",
+    "@kth/eslint-config-kth": "^2.0.2",
+    "@types/jest": "^27.0.3",
     "eslint": "^7.32.0",
-    "husky": "^7.0.2",
-    "jest": "^27.2.4",
-    "jest-extended": "^0.11.5",
-    "prettier": "^2.4.1",
-    "pretty-quick": "^3.1.1"
+    "husky": "^7.0.4",
+    "jest": "^27.4.3",
+    "prettier": "^2.5.1",
+    "pretty-quick": "^3.1.2"
   },
   "prettier": {
     "arrowParens": "avoid",
@@ -58,9 +57,6 @@
   "jest": {
     "clearMocks": true,
     "notifyMode": "failure-change",
-    "setupFilesAfterEnv": [
-      "jest-extended"
-    ],
     "testEnvironment": "node",
     "verbose": true
   }

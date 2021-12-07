@@ -5,7 +5,7 @@ This is a set of standard helpers needed in most KTH node-web projects.
 Register helpers:
 
 ```JavaScript
-const registerHeaderContentHelper = require('kth-node-web-common/lib/handlebars/helpers/headerContent')
+const registerHeaderContentHelper = require('@kth/kth-node-web-common/lib/handlebars/helpers/headerContent')
 
 registerHeaderContentHelper({
   proxyPrefixPath: '/app/mount/point',
@@ -28,7 +28,7 @@ Express middleware to fetch Cortina CMS blocks for requests with layouts requiri
 Uses https://github.com/KTH/kth-node-cortina-block
 
 ```JavaScript
-route.use('/app/mount/point', require('kth-node-web-common/lib/web/cortina')({
+route.use('/app/mount/point', require('@kth/kth-node-web-common/lib/web/cortina')({
   blockUrl: 'https://url.to/fetch/block',
   headers: {  // Optional way of passing headers to kth-node-cortina-block request
     'User-Agent': 'something...'
@@ -50,7 +50,7 @@ Middleware to handle redirects for crawlers.
 ```JavaScript
 const excludePath = '/app/mount/point' + '(?!/static).*'
 const excludeExpression = new RegExp(excludePath)
-server.use(excludeExpression, require('kth-node-web-common/lib/web/crawlerRedirect')({
+server.use(excludeExpression, require('@kth/kth-node-web-common/lib/web/crawlerRedirect')({
   hostUrl: 'http://sertver_host:port',
 }))
 ```
@@ -62,14 +62,14 @@ Middleware and helper methods to set and get language for this request.
 Register the middleware:
 
 ```JavaScript
-const { languageHandler } = require('kth-node-web-common/lib/language')
+const { languageHandler } = require('@kth/kth-node-web-common/lib/language')
 sever.use('/app/mount/point', languageHandler)
 ```
 
 In a controller you can get the language using the helper method **getLanguage**:
 
 ```JavaScript
-const language = require('kth-node-web-common/lib/language')
+const language = require('@kth/kth-node-web-common/lib/language')
 const lang = language.getLanguage(res)
 
 ```
@@ -89,7 +89,7 @@ Example in package.json script:
 "scripts": {
   "build": "NODE_ENV=production npm run move-handlebar-pages && rm -rf dist && npm run app && npm run vendor",
    ...
- "move-handlebar-pages": "cp ./node_modules/kth-node-web-common/lib/handlebars/pages/views/error.handlebars ./server/views/system/error.handlebars && cp ./node_modules/kth-node-web-common/lib/handlebars/pages/layouts/errorLayout.handlebars ./server/views/layouts/errorLayout.handlebars"
+ "move-handlebar-pages": "cp ./node_modules/@kth/kth-node-web-common/lib/handlebars/pages/views/error.handlebars ./server/views/system/error.handlebars && cp ./node_modules/@kth/kth-node-web-common/lib/handlebars/pages/layouts/errorLayout.handlebars ./server/views/layouts/errorLayout.handlebars"
 ```
 
 Alternative way if using dedicated build script:
@@ -101,11 +101,11 @@ mkdir -p ./server/views/system ./server/views/layouts
 
 # Copy error.handlebars page to this project
 echo -e "     -> Copying error.handlebars to server/views/system folder"
-cp ./node_modules/kth-node-web-common/lib/handlebars/pages/views/error.handlebars server/views/system
+cp ./node_modules/@kth/kth-node-web-common/lib/handlebars/pages/views/error.handlebars server/views/system
 
 # Copy errorLayout.handlebars layout to this project
 echo -e "     -> Copying errorLayout.handlebars to server/views/layouts folder"
-cp ./node_modules/kth-node-web-common/lib/handlebars/pages/layouts/errorLayout.handlebars server/views/layouts
+cp ./node_modules/@kth/kth-node-web-common/lib/handlebars/pages/layouts/errorLayout.handlebars server/views/layouts
 
 ```
 
@@ -120,6 +120,8 @@ server/views/layouts/errorLayout.handlebars
 # Changes in version 6
 
 Here is a small migration guide if your application is build from the node-web template.
+
+Please note when usig version 7, the package name must be changed to @kth/kth-node-web-common.
 
 ## Include common error messages from the package into your application
 
