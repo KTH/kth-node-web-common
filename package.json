@@ -30,10 +30,10 @@
   "homepage": "https://github.com/KTH/kth-node-web-common#readme",
   "dependencies": {
     "@kth/kth-node-cortina-block": "^4.0.1",
+    "@kth/log": "^4.0.0",
     "entities": "^2.2.0",
     "handlebars": "^4.7.7",
     "kth-node-i18n": "^1.0.12",
-    "kth-node-log": "^3.1.10",
     "kth-node-redis": "^3.1.35",
     "locale": "^0.1.0"
   },
