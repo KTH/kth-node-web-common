@@ -29,12 +29,12 @@
   },
   "homepage": "https://github.com/KTH/kth-node-web-common#readme",
   "dependencies": {
-    "@kth/kth-node-cortina-block": "^4.0.1",
+    "@kth/cortina-block": "^5.0.0",
     "@kth/log": "^4.0.0",
     "entities": "^2.2.0",
     "handlebars": "^4.7.7",
     "kth-node-i18n": "^1.0.12",
-    "kth-node-redis": "^3.1.35",
+    "kth-node-redis": "^3.1.36",
     "locale": "^0.1.0"
   },
   "devDependencies": {
@@ -42,7 +42,7 @@
     "@types/jest": "^27.0.3",
     "eslint": "^7.32.0",
     "husky": "^7.0.4",
-    "jest": "^27.4.3",
+    "jest": "^27.4.5",
     "prettier": "^2.5.1",
     "pretty-quick": "^3.1.2"
   },

@@ -25,7 +25,7 @@ Usage in templates:
 
 Express middleware to fetch Cortina CMS blocks for requests with layouts requiring them:
 
-Uses https://github.com/KTH/kth-node-cortina-block
+Uses https://github.com/kth/cortina-block
 
 ```JavaScript
 route.use('/app/mount/point', require('@kth/kth-node-web-common/lib/web/cortina')({
