@@ -29,7 +29,7 @@
   },
   "homepage": "https://github.com/KTH/kth-node-web-common#readme",
   "dependencies": {
-    "@kth/cortina-block": "^5.0.1",
+    "@kth/cortina-block": "^5.0.2",
     "@kth/log": "^4.0.0",
     "entities": "^2.2.0",
     "handlebars": "^4.7.7",
