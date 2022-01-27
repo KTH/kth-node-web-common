@@ -8,7 +8,7 @@
     "lint": "eslint . --quiet",
     "lint-v": "eslint .",
     "build": "npm test",
-    "prepare": "bash -c 'if [ -f ./node_modules/.bin/husky ]; then husky install; fi'"
+    "prepare": "if [ -f ./node_modules/.bin/husky ]; then husky install; fi"
   },
   "repository": {
     "type": "git",
