@@ -39,7 +39,8 @@ route.use('/app/mount/point', require('@kth/kth-node-web-common/lib/web/cortina'
   proxyPrefixPath: '/app/mount/point',
   hostUrl: 'http://server_host:port',
   redisConfig: { ... }, // Redis config object, see kth-node-configuration
-  globalLink: true // Default false if not set, if true the language link point to the startpage of KTH
+  globalLink: true, // Default false if not set, if true the language link point to the startpage of KTH,
+  supportedLanguages: ['sv'] // Optional - set to languges supported - if only one language is supported, globalLink sets to true
 }))
 ```
 
