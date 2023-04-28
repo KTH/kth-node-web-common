@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{headTitle}}</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{{headDescription}}">
+    <link rel="shortcut icon" id="favicon" href="//www.kth.se/img/icon/favicon.ico">
+
+    {{prefixStyle '/static/kth-style/css/kth-bootstrap.css' 'styles' 'screen'}}
+
+    {{#extend 'styles'}}
+      <style>
+        .main.container {
+          padding-top: 15px;
+        }
+        @media (min-width: 768px) {
+          html, body {
+            height: 100%;
+          }
+          .header-container__top {
+            margin-bottom: 19px;
+          }
+          .main.container {
+            min-height: calc(100% - 212px);
+            padding-top: 0;
+          }
+          .main.container .app {
+            padding: 30px;
+          }
+        }
+      </style>
+    {{/extend}}
+
+    {{{render 'styles'}}}
+
+    {{#extend 'head-scripts'}}
+      <script src="//www.kth.se/social/toolbar/widget.js"></script>
+    {{/extend}}
+
+    {{{render 'head-scripts'}}}
+  </head>
+  <body class="use-personal-menu">
+    <a class="skipToMainContent" href="#mainContent" tabindex="1">Skip to main content</a>
+
+    <header>
+      <div class="container-fluid">
+        <div class="container">
+          <div class="header-container__top">
+            <figure class="block figure defaultTheme mainLogo">
+              <a href="https://www.kth.se"><img class="figure-img img-fluid" src="https://www.kth.se/polopoly_fs/1.77259.1610365240!/KTH_Logotyp_RGB_2013-2.svg" alt="To KTH startpage" title="KTH_Logotyp_RGB_2013-2.svg" height="70" width="70"></a>
+            </figure>
+          </div>
+          <div class="header-container__bottom"></div>
+        </div>
+      </div>
+      <div id="gradientBorder"></div>
+    </header>
+    <div class="container main">
+      <div class="row">
+        <div class="col app">
+          <div id="app">
+            <main id="mainContent" class="a">
+              <h1>{{title}}</h1>
+              {{#if text}}
+                <p>{{text}}</p>
+              {{/if}}
+
+              {{#if text1}}
+                <p>{{text1}}</p>
+                <p>{{text2}}</p>
+                <p><a href="{{link1}}">{{linkText1}}</a></p>
+                <p><a href="{{link2}}">{{linkText2}}</a></p>
+                <p><a href="{{link3}}">{{linkText3}}</a></p>
+              {{/if}}
+
+              <p>({{statusCodeLabel}} {{statusCode}})</p>
+              {{#if error.stack}}
+                <div class="card card-body bg-light">
+                  <pre>{{error.stack}}</pre>
+                </div>
+              {{/if}}
+              {{{body}}}
+              {{{render 'scripts'}}}
+            </main>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="container"></footer>
+  </body>
+</html>

@@ -1,3 +1,25 @@
+# @kth/kth-node-web-common
+
+## Changes in version 8
+
+First, make sure your code is up to date with [Changes in version 6](#changes-in-version-6)
+
+The error page can now be rendered directly from inside the package. No need to copy and register the handlebar-file from the app.
+
+If the app only renders the error page via the `renderErrorPage` helper, you can remove lines like below:
+
+```bash
+mkdir -p ./server/views/system ./server/views/layouts
+
+cp ./node_modules/@kth/kth-node-web-common/lib/handlebars/pages/views/ ...
+
+cp ./node_modules/@kth/kth-node-web-common/lib/handlebars/pages/layouts/ ...
+```
+
+They are usualy located in `build.sh`, or in the scripts section of `package.json`
+
+⚠️ __Warning__ it will still be possible to copy the handlebar files to your applications, but they will no longer be updated, and will probalby be removed in the future. ⚠️
+
 ## Handlebar Helpers
 
 This is a set of standard helpers needed in most KTH node-web projects.
@@ -75,54 +97,34 @@ const lang = language.getLanguage(res)
 
 ```
 
-## Views
+## Error Page
 
-In lib/handlebars/pages you will find common handlebar pages that can be used in your node app.
+There is a helper for rendering error pages with proper styling
 
-### Error
+To use it, the following must be configured:
 
-Error page for 404 or 500. It is recommended to use shell script to coy the files like the examples below.
-Note this package no longer provdes gulp tasks to copy the files.
+- [Register handlebar helpers](#handlebar-helpers)
+- [Include error messages](#include-common-error-messages-from-the-package-into-your-application)
 
-Example in package.json script:
+Then, import the helper and use as a [final](#use-the-function-from-the-kth-node-web-common-package-in-the-apllication-systemctrljs) method to express
 
 ```JavaScript
-"scripts": {
-  "build": "NODE_ENV=production npm run move-handlebar-pages && rm -rf dist && npm run app && npm run vendor",
-   ...
- "move-handlebar-pages": "cp ./node_modules/@kth/kth-node-web-common/lib/handlebars/pages/views/error.handlebars ./server/views/system/error.handlebars && cp ./node_modules/@kth/kth-node-web-common/lib/handlebars/pages/layouts/errorLayout.handlebars ./server/views/layouts/errorLayout.handlebars"
-```
+const errorHandler = require('kth-node-web-common/lib/error')
 
-Alternative way if using dedicated build script:
 
-```
-# Ensure  target folder structure
-echo -e "     -> Creating the server/view folder structure"
-mkdir -p ./server/views/system ./server/views/layouts
+// commonly found in systemCtrl.js
+function _final(err, req, res, next) {
 
-# Copy error.handlebars page to this project
-echo -e "     -> Copying error.handlebars to server/views/system folder"
-cp ./node_modules/@kth/kth-node-web-common/lib/handlebars/pages/views/error.handlebars server/views/system
+  errorHandler.renderErrorPage(res, req, statusCode, i18n, isProd, lang, err)
+}
 
-# Copy errorLayout.handlebars layout to this project
-echo -e "     -> Copying errorLayout.handlebars to server/views/layouts folder"
-cp ./node_modules/@kth/kth-node-web-common/lib/handlebars/pages/layouts/errorLayout.handlebars server/views/layouts
-
-```
-
-Remember to add the files to your .gitignore, they should not be pushed to your repo since they are added on build.
-
-```
-# KTH Node Web Common imported files
-server/views/system/error.handlebars
-server/views/layouts/errorLayout.handlebars
 ```
 
 # Changes in version 6
 
 Here is a small migration guide if your application is build from the node-web template.
 
-Please note when usig version 7, the package name must be changed to @kth/kth-node-web-common.
+Please note when using version 7, the package name must be changed to @kth/kth-node-web-common.
 
 ## Include common error messages from the package into your application
 

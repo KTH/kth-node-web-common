@@ -4,7 +4,8 @@
   "description": "Common components for node-web projects",
   "automaticPublish": "true",
   "scripts": {
-    "test": "echo \"ok\"",
+    "test": "jest",
+    "test:watch": "jest --watch",
     "lint": "eslint . --quiet",
     "lint-v": "eslint .",
     "build": "npm test",
