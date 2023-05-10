@@ -4,7 +4,7 @@
 
 First, make sure your code is up to date with [Changes in version 6](#changes-in-version-6)
 
-The error page can now be rendered directly from inside the package. No need to copy and register the handlebar-file from the app.
+The error page can now be rendered directly from inside the package. No need to copy and register the Handlebars-file from the app.
 
 If the app only renders the error page via the `renderErrorPage` helper, you can remove lines like below:
 
@@ -16,9 +16,9 @@ cp ./node_modules/@kth/kth-node-web-common/lib/handlebars/pages/views/ ...
 cp ./node_modules/@kth/kth-node-web-common/lib/handlebars/pages/layouts/ ...
 ```
 
-They are usualy located in `build.sh`, or in the scripts section of `package.json`
+They are usually located in `build.sh`, or in the scripts section of `package.json`
 
-⚠️ __Warning__ it will still be possible to copy the handlebar files to your applications, but they will no longer be updated, and will probalby be removed in the future. ⚠️
+⚠️ **Warning** it will still be possible to copy the handlebar files to your applications, but they will no longer be updated, and will probalby be removed in the future. ⚠️
 
 ## Handlebar Helpers
 

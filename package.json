@@ -1,6 +1,6 @@
 {
   "name": "@kth/kth-node-web-common",
-  "version": "7.0.0",
+  "version": "8.0.0",
   "description": "Common components for node-web projects",
   "automaticPublish": "true",
   "scripts": {
