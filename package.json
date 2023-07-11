@@ -8,7 +8,7 @@
     "test:watch": "jest --watch",
     "lint": "eslint . --quiet",
     "lint-v": "eslint .",
-    "build": "npm test",
+    "build": "echo \"No build step required\"",
     "prepare": "if [ -f ./node_modules/.bin/husky ]; then husky install; fi"
   },
   "repository": {
