@@ -1,24 +1,24 @@
-'use strict'
-
 /**
  * Language middleware and helper.
  * Helps maintain the selected language by using the session cookie.
  */
-const locale = require('locale')
+import { Response } from 'express'
+import locale from 'locale'
 
 const cookieName = 'language'
-const validLanguages = ['sv', 'en']
-const defaultLanguage = validLanguages[0]
-const supportedLocales = new locale.Locales(validLanguages, defaultLanguage)
+export type SupportedLanguage = 'sv' | 'en'
+const supportedLanguages: SupportedLanguage[] = ['sv', 'en']
+const defaultLanguage = supportedLanguages[0]
+const supportedLocales = new locale.Locales(supportedLanguages, defaultLanguage)
 
 /**
  * Initialize locale and language for the current user session (respects cookie: language).
  */
-function _init(req, res, newLang) {
+function init(req, res, newLang) {
   let lang = newLang || req.cookies[cookieName]
 
   // Only allow lang to be one of the valid languages
-  if (lang && !validLanguages.includes(lang)) lang = defaultLanguage
+  if (lang && !supportedLanguages.includes(lang)) lang = defaultLanguage
 
   let chosenLocale
 
@@ -48,18 +48,20 @@ function _init(req, res, newLang) {
 /**
  * Helper that gets the current language from the session
  */
-function _getLanguage(res) {
-  return res.locals.locale && res.locals.locale.language
+export function getLanguage(res: Response): SupportedLanguage {
+  const lang = res.locals.locale && res.locals.locale.language
+  if (supportedLanguages.includes(lang)) return lang
+  return defaultLanguage
 }
 
 /**
  * Middleware that checks for l-flag and stores its value in the session
  */
-function _languageHandler(req, res, next) {
+function languageHandler(req, res, next) {
   // Set locale if not already done by other middleware
   // You can customise behaviour by adding middleware before this one
   if (!res.locals.locale) {
-    _init(req, res, req.query.l)
+    init(req, res, req.query.l)
   }
   next()
 }
@@ -70,16 +72,15 @@ function _languageHandler(req, res, next) {
  * @param {any} req
  * @returns language from language-cookie
  */
-function _cookieLanguage(req) {
+function cookieLanguage(req) {
   const languageCookie = req.cookies[cookieName]
   return languageCookie === 'undefined' || languageCookie === undefined ? undefined : languageCookie
 }
 
-module.exports = {
-  getLanguage: _getLanguage,
-  init: _init,
-  validLanguages,
+export default {
+  init,
+  supportedLanguages,
   defaultLanguage,
-  languageHandler: _languageHandler,
-  cookieLanguage: _cookieLanguage,
+  languageHandler,
+  cookieLanguage,
 }

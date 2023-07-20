@@ -1,12 +1,6 @@
-/* eslint no-use-before-define: ["error", "nofunc"] */
-
-// @ts-check
-
-const Handlebars = require('handlebars')
-const log = require('@kth/log')
-const i18n = require('kth-node-i18n')
-
-module.exports = registerBreadcrumbHelper
+import Handlebars from 'handlebars'
+import log from '@kth/log'
+import i18n from 'kth-node-i18n'
 
 /**
  * Register
@@ -16,7 +10,12 @@ module.exports = registerBreadcrumbHelper
  * @param {string} basePath URL of section, e.g. "https://www.kth.se/utbildning"
  * @param {string} baseNameKey caption of section-link, e.g. "Utbildning"
  */
-function registerBreadcrumbHelper(host, hostNameKey, basePath, baseNameKey) {
+export default function registerBreadcrumbHelper(
+  host: string,
+  hostNameKey: string,
+  basePath: string,
+  baseNameKey: string
+) {
   /**
    * @param {object[]} pathList with items { url: '...', label: '...' } or { label: '...' }
    * @param {string} lang, e.g. "en"
@@ -26,7 +25,7 @@ function registerBreadcrumbHelper(host, hostNameKey, basePath, baseNameKey) {
    * Example
    * {{breadcrumbs pathList lang}}
    */
-  function breadcrumbs(pathList, lang) {
+  function breadcrumbs(pathList: { url: string; label: string }[], lang: string) {
     const pathListIsValid =
       Array.isArray(pathList) &&
       pathList.every(
@@ -44,7 +43,7 @@ function registerBreadcrumbHelper(host, hostNameKey, basePath, baseNameKey) {
       log.warn('Breadcrumbs helper did not get hostName and hostNameKey, defaulting to www.kth.se and KTH')
     }
 
-    const listItems = []
+    const listItems: string[] = []
 
     const captionHost = host && hostNameKey ? i18n.message(hostNameKey, lang) : 'KTH'
     listItems.push(`<a href="${hostUrl}">${captionHost}</a>`)
