@@ -12,7 +12,8 @@ import log from '@kth/log'
 import cortina from '@kth/cortina-block'
 import redis from 'kth-node-redis'
 import i18n from 'kth-node-i18n'
-import { type SupportedLanguage, getLanguage } from '../language'
+import { type SupportedLanguage } from '../language'
+import language from '../language'
 
 type Options = {
   blockUrl: string
@@ -44,7 +45,7 @@ export default function cortinaCommon(options: Options) {
   }
 
   function _prepareBlocks(req: Request, res: Response, blocks) {
-    const lang = getLanguage(res)
+    const lang = language.getLanguage(res)
     return cortina.prepare(blocks, {
       // if you don't want/need custom site name or locale text,
       // simply comment out the appropriate lines of code
@@ -67,9 +68,9 @@ export default function cortinaCommon(options: Options) {
   }
 
   function _getCortinaBlocks(req: Request, res: Response, next: NextFunction, client?: any) {
-    const language = getLanguage(res)
+    const lang = language.getLanguage(res)
     const config = {
-      language,
+      language: lang,
       url: cortinaBlockUrl,
       headers,
       redis: client,
