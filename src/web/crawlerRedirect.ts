@@ -1,5 +1,3 @@
-'use strict'
-
 /*
  * Middleware for redirecting crawler requests to the canonical url.
  *
@@ -11,10 +9,15 @@
  * path does NOT match '/<proxyPrefixPath>/static', i.e. skip resources
  */
 
-const log = require('@kth/log')
-const url = require('url')
+import log from '@kth/log'
+import { NextFunction, Request, Response } from 'express'
+import url from 'url'
 
-module.exports = function crawlerRedirect(options) {
+type Options = {
+  hostUrl: string
+}
+
+export default function crawlerRedirect(options: Options) {
   const { hostUrl } = options // config.hostUrl
 
   function isCrawlerRequest(req) {
@@ -28,9 +31,10 @@ module.exports = function crawlerRedirect(options) {
     return false
   }
 
-  function getCanonicalUrl(aUrl) {
+  function getCanonicalUrl(aUrl: string) {
     const tmpUrl = url.parse(aUrl)
     tmpUrl.search = ''
+    //@ts-ignore
     let canonicalUrl = tmpUrl.format()
     if (canonicalUrl.endsWith('/')) {
       canonicalUrl = canonicalUrl.substr(0, canonicalUrl.length - 1)
@@ -39,11 +43,11 @@ module.exports = function crawlerRedirect(options) {
     return canonicalUrl
   }
 
-  function shouldRedirectToCanonicalUrl(req, currentUrl, canonicalUrl) {
+  function shouldRedirectToCanonicalUrl(req: Request, currentUrl: string, canonicalUrl: string) {
     return isCrawlerRequest(req) && currentUrl !== canonicalUrl
   }
 
-  function redirectToCanonicalUrl(req, res, next) {
+  function redirectToCanonicalUrl(req: Request, res: Response, next: NextFunction) {
     const contentType = req.get('Accept')
     if (!contentType || contentType.indexOf('application/json') >= 0) {
       next()

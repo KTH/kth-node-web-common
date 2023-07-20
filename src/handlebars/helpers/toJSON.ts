@@ -1,8 +1,4 @@
-/* eslint-disable prefer-arrow-callback */
-
-'use strict'
-
-const Handlebars = require('handlebars')
+import Handlebars from 'handlebars'
 
 /** @function safe
  *

@@ -1,5 +1,3 @@
-'use strict'
-
 /*
  * Middleware for loading Cortina blocks.
  *
@@ -9,27 +7,44 @@
  * The blocks are not loaded for static routes.
  * There’s also a query parameter, 'nocortinablocks', to request that no blocks should be loaded.
  */
+import { NextFunction, Request, Response } from 'express'
+import log from '@kth/log'
+import cortina from '@kth/cortina-block'
+import redis from 'kth-node-redis'
+import i18n from 'kth-node-i18n'
+import { type SupportedLanguage, getLanguage } from '../language'
 
-const log = require('@kth/log')
-const cortina = require('@kth/cortina-block')
-const redis = require('kth-node-redis')
-const i18n = require('kth-node-i18n')
-const language = require('../language')
+type Options = {
+  blockUrl: string
+  headers: Headers
+  addBlocks: any
+  proxyPrefixPath: string
+  hostUrl: string
+  redisConfig: any
+  redisKey: string
+  supportedLanguages: SupportedLanguage[]
+  globalLink: boolean
+}
 
-module.exports = function cortinaCommon(options) {
+export default function cortinaCommon(options: Options) {
   const cortinaBlockUrl = options.blockUrl // config.blockApi.blockUrl
-  const { headers, addBlocks, proxyPrefixPath, hostUrl, redisConfig, redisKey } = options
-  let { supportedLanguages = ['sv', 'en'] } = options
-  if (!supportedLanguages.length) supportedLanguages = ['sv', 'en']
+  const {
+    headers,
+    addBlocks,
+    proxyPrefixPath,
+    hostUrl,
+    redisConfig,
+    redisKey,
+    supportedLanguages = ['sv', 'en'],
+  } = options
   const globalLink = supportedLanguages.length === 1 ? true : options.globalLink || false
 
   function _getRedisClient() {
     return redis('cortina', redisConfig)
   }
 
-  function _prepareBlocks(req, res, blocks) {
-    let lang = language.getLanguage(res)
-    if (!supportedLanguages.includes(lang)) [lang] = supportedLanguages
+  function _prepareBlocks(req: Request, res: Response, blocks) {
+    const lang = getLanguage(res)
     return cortina.prepare(blocks, {
       // if you don't want/need custom site name or locale text,
       // simply comment out the appropriate lines of code
@@ -51,17 +66,17 @@ module.exports = function cortinaCommon(options) {
     })
   }
 
-  function _getCortinaBlocks(client, req, res, next) {
-    let lang = language.getLanguage(res)
-    if (!supportedLanguages.includes(lang)) [lang] = supportedLanguages
-    return cortina({
-      language: lang,
+  function _getCortinaBlocks(req: Request, res: Response, next: NextFunction, client?: any) {
+    const language = getLanguage(res)
+    const config = {
+      language,
       url: cortinaBlockUrl,
       headers,
       redis: client,
       blocks: addBlocks,
       redisKey,
-    })
+    }
+    return cortina(config)
       .then(blocks => {
         res.locals.blocks = _prepareBlocks(req, res, blocks)
         log.debug('Cortina blocks loaded.')
@@ -74,18 +89,17 @@ module.exports = function cortinaCommon(options) {
       })
   }
 
-  function _cortina(req, res, next) {
+  function _cortina(req: Request, res: Response, next: NextFunction) {
     // don't load cortina blocks for static content, or if query parameter 'nocortinablocks' is present
     if (/^\/static\/.*/.test(req.url) || req.query.nocortinablocks !== undefined) {
-      next()
-      return
+      return next()
     }
 
     _getRedisClient()
-      .then(client => _getCortinaBlocks(client, req, res, next))
+      .then(client => _getCortinaBlocks(req, res, next, client))
       .catch(err => {
         log.error('Failed to create Redis client: ' + err.message)
-        return _getCortinaBlocks(null, req, res, next)
+        return _getCortinaBlocks(req, res, next)
       })
   }
 
