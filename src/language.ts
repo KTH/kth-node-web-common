@@ -48,7 +48,7 @@ function init(req, res, newLang) {
 /**
  * Helper that gets the current language from the session
  */
-export function getLanguage(res: Response): SupportedLanguage {
+function getLanguage(res: Response): SupportedLanguage {
   const lang = res.locals.locale && res.locals.locale.language
   if (supportedLanguages.includes(lang)) return lang
   return defaultLanguage
@@ -79,6 +79,7 @@ function cookieLanguage(req) {
 
 export default {
   init,
+  getLanguage,
   supportedLanguages,
   defaultLanguage,
   languageHandler,
