@@ -9,7 +9,7 @@
  */
 import { NextFunction, Request, Response } from 'express'
 import log from '@kth/log'
-import cortina from '@kth/cortina-block'
+import cortina, { prepare } from '@kth/cortina-block'
 import redis from 'kth-node-redis'
 import i18n from 'kth-node-i18n'
 import { type SupportedLanguage } from '../language'
@@ -46,7 +46,7 @@ export default function cortinaCommon(options: Options) {
 
   function _prepareBlocks(req: Request, res: Response, blocks) {
     const lang = language.getLanguage(res)
-    return cortina.prepare(blocks, {
+    return prepare(blocks, {
       // if you don't want/need custom site name or locale text,
       // simply comment out the appropriate lines of code
 
