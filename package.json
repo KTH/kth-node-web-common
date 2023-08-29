@@ -6,7 +6,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "lint": "eslint src/**/*.ts",
-    "build": "npm ci && tsc",
+    "build": "bash ./build.sh",
     "prepare": "if [ -f ./node_modules/.bin/husky ]; then husky install; fi"
   },
   "repository": {
