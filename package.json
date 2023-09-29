@@ -28,12 +28,10 @@
   },
   "homepage": "https://github.com/KTH/kth-node-web-common#readme",
   "dependencies": {
-    "@kth/cortina-block": "^6.0.0-2",
     "@kth/log": "^4.0.5",
     "entities": "^2.2.0",
     "handlebars": "^4.7.7",
     "kth-node-i18n": "^1.0.15",
-    "kth-node-redis": "^3.1.43",
     "locale": "^0.1.0"
   },
   "devDependencies": {
