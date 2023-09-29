@@ -1,9 +1,5 @@
-/* eslint-disable prefer-arrow-callback */
-
-'use strict'
-
-const Handlebars = require('handlebars')
-const { encodeHTML, decodeHTML } = require('entities')
+import Handlebars from 'handlebars'
+import { encodeHTML, decodeHTML } from 'entities'
 
 /** @function safe
  *

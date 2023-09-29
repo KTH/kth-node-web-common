@@ -1,10 +1,8 @@
-'use strict'
+import handlebars from 'handlebars'
+import log from '@kth/log'
+import fs from 'fs'
+import path from 'path'
 
-const handlebars = require('handlebars')
-const log = require('@kth/log')
-
-const fs = require('fs')
-const path = require('path')
 const errorHandlebar = fs.readFileSync(path.join(__dirname, '/errorTemplate.handlebars'), 'utf8')
 
 /**
@@ -18,7 +16,7 @@ const errorHandlebar = fs.readFileSync(path.join(__dirname, '/errorTemplate.hand
  * @param {*} lang the given language
  * @param {*} err the givven error object
  */
-function _renderErrorPage(res, req, statusCode, i18n, isProd, lang, err) {
+export function renderErrorPage(res, req, statusCode, i18n, isProd, lang, err) {
   let headTitle
   let headDescription
   let title
@@ -126,7 +124,3 @@ const requiredHelpers = ['prefixStyle', 'render', 'extend']
 
 const errorHelpersExists = () =>
   requiredHelpers.every(helperName => Object.keys(handlebars.helpers).includes(helperName))
-
-module.exports = {
-  renderErrorPage: _renderErrorPage,
-}

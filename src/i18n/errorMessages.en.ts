@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   shortNames: ['en'],
   longNameSe: 'Engelska',
   longNameEn: 'English',

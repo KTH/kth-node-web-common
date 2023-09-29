@@ -1,9 +1,5 @@
-/* eslint-disable prefer-arrow-callback */
-
-'use strict'
-
-const Handlebars = require('handlebars')
-const log = require('@kth/log')
+import Handlebars from 'handlebars'
+import log from '@kth/log'
 
 /** @function i18n
  *
@@ -16,8 +12,8 @@ const log = require('@kth/log')
  * @example
  * {{i18n 'edit_label' lang}}
  */
-module.exports = function registerI18nHelper(i18n) {
-  Handlebars.registerHelper('i18n', function i18nHelper(keyIn, lang, keyPostfix) {
+export default function registerI18nHelper(i18n: any) {
+  Handlebars.registerHelper('i18n', function i18nHelper(keyIn: string, lang: string, keyPostfix: string) {
     // Check params and give useful error message since stack traces aren't very useable in layouts
     if (typeof keyIn !== 'string') {
       throw new Error('[i18n] helper requires first parameter to be a string matching an i18n label. Got: ' + keyIn)

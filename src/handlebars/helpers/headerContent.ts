@@ -1,8 +1,9 @@
-/* eslint-disable prefer-arrow-callback */
+import Handlebars from 'handlebars'
 
-'use strict'
-
-const Handlebars = require('handlebars')
+type Options = {
+  proxyPrefixPath: string
+  version: string
+}
 
 /** @function headerContent
  *
@@ -13,7 +14,7 @@ const Handlebars = require('handlebars')
  * @example
  * require('kth-node-web-common/lib/handlebars/helpers/headerContent')({ proxyPrefixPath: '', version: ''})
  */
-module.exports = function headerContent(options) {
+export default function headerContent(options: Options) {
   const proxyPrefixPathUri = options.proxyPrefixPath || ''
   const version = options.version || 'version not set'
 
@@ -26,7 +27,7 @@ module.exports = function headerContent(options) {
    * @example
    * {{withVersion '/path/to/script.js'}}
    */
-  Handlebars.registerHelper('withVersion', function withVersion(url) {
+  Handlebars.registerHelper('withVersion', function withVersion(url: string) {
     // Check params and give useful error message since stack traces aren't very useable in layouts
     if (typeof url !== 'string') {
       throw new Error('[withVersion] helper requires first parameter to be a string. Got: ' + url)
@@ -34,7 +35,7 @@ module.exports = function headerContent(options) {
     return url + '?v=' + version
   })
 
-  Handlebars.registerHelper('withProxyPrefixPath', function withProxyPrefixPath(url) {
+  Handlebars.registerHelper('withProxyPrefixPath', function withProxyPrefixPath(url: string) {
     // Check params and give useful error message since stack traces aren't very useable in layouts
     if (typeof url !== 'string') {
       throw new Error('[withProxyPrefixPath] helper requires first parameter to be a string. Got: ' + url)
@@ -54,7 +55,7 @@ module.exports = function headerContent(options) {
    * @example
    * {{withVersion '/path/to/script.js'}}
    */
-  Handlebars.registerHelper('extend', function extend(name, opt) {
+  Handlebars.registerHelper('extend', function extend(name: string, opt: any) {
     // Check params and give useful error message since stack traces aren't very useable in layouts
     if (typeof name !== 'string') {
       throw new Error('[extend] helper requires first parameter to be a string. Got: ' + name)
@@ -73,7 +74,7 @@ module.exports = function headerContent(options) {
    * @example
    * {{prefixScript '/path/to/script.js' 'scripts'}}
    */
-  Handlebars.registerHelper('prefixScript', function prefixScript(urlIn, blockNameIn) {
+  Handlebars.registerHelper('prefixScript', function prefixScript(urlIn: string, blockNameIn?: string) {
     // Check params and give useful error message since stack traces aren't very useable in layouts
     if (typeof urlIn !== 'string') {
       throw new Error('[prefixScript] helper requires first parameter (url) to be a string. Got: ' + urlIn)
@@ -98,7 +99,7 @@ module.exports = function headerContent(options) {
    * @example
    * {{prefixStyle '/path/to/style.css' 'styles' 'all'}}
    */
-  Handlebars.registerHelper('prefixStyle', function prefixStyle(urlIn, blockNameIn, mediaIn) {
+  Handlebars.registerHelper('prefixStyle', function prefixStyle(urlIn: string, blockNameIn?: string, mediaIn?: string) {
     // Check params and give useful error message since stack traces aren't very useable in layouts
     if (typeof urlIn !== 'string') {
       throw new Error('[prefixScript] helper requires first parameter (url) to be a string. Got: ' + urlIn)
@@ -123,7 +124,7 @@ module.exports = function headerContent(options) {
    * @example
    * {{render 'scripts'}}
    */
-  Handlebars.registerHelper('render', function render(name) {
+  Handlebars.registerHelper('render', function render(name: string) {
     // Check params and give useful error message since stack traces aren't very useable in layouts
     if (typeof name !== 'string') {
       throw new Error('[safe] helper requires first parameter to be a string. Got: ' + name)

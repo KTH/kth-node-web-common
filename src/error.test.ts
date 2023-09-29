@@ -1,5 +1,3 @@
-'use strict'
-
 // handlebar mocks
 const mockErrorPage = '<html>error</html>'
 const mockTemplate = jest.fn(() => mockErrorPage)
@@ -43,7 +41,7 @@ describe('Error page', () => {
       it('compile template from string', () => {
         errorHandler.renderErrorPage(res, req, 444, mockI18n, isProd, lang, err)
 
-        expect(handlebars.compile).toBeCalledWith(expect.stringContaining("<title>{{headTitle}}</title>"))
+        expect(handlebars.compile).toBeCalledWith(expect.stringContaining('<title>{{headTitle}}</title>'))
       })
       it('render template with correct statusCode', () => {
         errorHandler.renderErrorPage(res, req, 456, mockI18n, isProd, lang, err)
@@ -67,19 +65,18 @@ describe('Error page', () => {
       })
 
       it('hides error stack if "isProd = true"', () => {
-        const testError = new Error("This is a test")
+        const testError = new Error('This is a test')
         errorHandler.renderErrorPage(res, req, 666, mockI18n, true, lang, testError)
 
         expect(mockTemplate).toBeCalledWith(expect.objectContaining({ error: {} }))
       })
-      
+
       it('shows error stack if "isProd = false"', () => {
-        const testError = new Error("This is a test")
+        const testError = new Error('This is a test')
         errorHandler.renderErrorPage(res, req, 666, mockI18n, false, lang, testError)
 
         expect(mockTemplate).toBeCalledWith(expect.objectContaining({ error: testError }))
       })
-      
     })
     describe('Fallback', () => {
       it('respons with fallback if no handlebar helpers are registered', () => {
