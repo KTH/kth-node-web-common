@@ -47,9 +47,23 @@ Usage in templates:
 
 Helper to generate breadcrumb markup.
 
-1. Import: `const { registerBreadcrumbHelper } = require('@kth/kth-node-web-common/lib/handlebars/helpers/breadcrumbs')`
-2. Register: `registerBreadcrumbHelper()`
-3. Render: `res.render(breadcrumbsPath: [{url: 'https://kth.se', label: 'KTH'}, ...], ...)`
+Import:
+
+```JavaScript
+const { registerBreadcrumbHelper } = require('@kth/kth-node-web-common/lib/handlebars/helpers/breadcrumbs')
+```
+
+Register:
+
+```JavaScript
+registerBreadcrumbHelper()
+```
+
+Render:
+
+```JavaScript
+res.render(breadcrumbsPath: [{url: 'https://kth.se', label: 'KTH'}, ...], ...)
+```
 
 ## Cortina Blocks
 
