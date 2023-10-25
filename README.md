@@ -43,6 +43,14 @@ Usage in templates:
 - {{ prefixStyle url name media }} -- add a style tag for named media type with version set to style block **name**
 - {{ render name }} -- used by a layout to render script and style blocks in appropriate places
 
+## Breadcrumb helper
+
+Helper to generate breadcrumb markup.
+
+1. Import: `const { registerBreadcrumbHelper } = require('@kth/kth-node-web-common/lib/handlebars/helpers/breadcrumbs')`
+2. Register: `registerBreadcrumbHelper()`
+3. Render: `res.render(breadcrumbsPath: [{url: 'https://kth.se', label: 'KTH'}, ...], ...)`
+
 ## Cortina Blocks
 
 Express middleware to fetch Cortina CMS blocks for requests with layouts requiring them:
