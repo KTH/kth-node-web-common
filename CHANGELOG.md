@@ -4,7 +4,7 @@ All notable changes for major version updates will be documented here.
 
 ## 9.0.0
 
-- **Breaking:** function `registerBreadcrumbHelper` no longer takes any config. All breadcrumbs are now sent to `res.render`.
+- **Breaking:** function `registerBreadcrumbHelper` no longer takes any config. All breadcrumbs now need to be sent to `res.render` on **every request**.
 - **Breaking:** import changed to `const {registerBreadcrumbHelper} = require('@kth/kth-node-web-common/lib/handlebars/helpers/breadcrumbs')`
 
 ## 8.0.0
