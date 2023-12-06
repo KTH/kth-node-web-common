@@ -1,8 +1,8 @@
 # @kth/kth-node-web-common
 
-## Changes in version 8
+## Migrate to Version 8
 
-First, make sure your code is up to date with [Changes in version 6](#changes-in-version-6)
+First, make sure your code is up to date with [Migrate to version 6](#migrate-to-version-6)
 
 The error page can now be rendered directly from inside the package. No need to copy and register the Handlebars-file from the app.
 
@@ -20,46 +20,46 @@ They are usually located in `build.sh`, or in the scripts section of `package.js
 
 ⚠️ **Warning** it will still be possible to copy the handlebar files to your applications, but they will no longer be updated, and will probalby be removed in the future. ⚠️
 
-## Handlebar Helpers
+## Header Content Helpers
 
-This is a set of standard helpers needed in most KTH node-web projects.
+This is a set of standard helpers that are useful in most [KTH/node-web](https://github.com/KTH/node-web) projects.
 
-Register helpers:
+### Register Helpers
 
-```JavaScript
+```javascript
 const registerHeaderContentHelper = require('@kth/kth-node-web-common/lib/handlebars/helpers/headerContent')
 
 registerHeaderContentHelper({
   proxyPrefixPath: '/app/mount/point',
-  version: 'x.x.x'
+  version: 'x.x.x',
 })
 ```
 
-Usage in templates:
+### Use in Handlebars Templates
 
-- {{ withVersion url }} -- appends `'?v=' + version` to the passed string
 - {{ extend name options }} -- calls the function options.fn with content of block **name** as param and adds it to named block
 - {{ prefixScript url name }} -- add a script tag with version set to script block **name**
 - {{ prefixStyle url name media }} -- add a style tag for named media type with version set to style block **name**
 - {{ render name }} -- used by a layout to render script and style blocks in appropriate places
+- {{ withVersion url }} -- appends `'?v=' + version` to the passed string
 
-## Breadcrumb helper
+## Breadcrumb Helper
 
 Helper to generate breadcrumb markup.
 
-Import:
+### Import
 
-```JavaScript
+```javascript
 const { registerBreadcrumbHelper } = require('@kth/kth-node-web-common/lib/handlebars/helpers/breadcrumbs')
 ```
 
-Register:
+### Register
 
-```JavaScript
+```javascript
 registerBreadcrumbHelper()
 ```
 
-Render:
+### Render
 
 ```JavaScript
 res.render(breadcrumbsPath: [{url: 'https://kth.se', label: 'KTH'}, ...], ...)
@@ -132,25 +132,22 @@ To use it, the following must be configured:
 
 Then, import the helper and use as a [final](#use-the-function-from-the-kth-node-web-common-package-in-the-apllication-systemctrljs) method to express
 
-```JavaScript
+```javascript
 const errorHandler = require('kth-node-web-common/lib/error')
-
 
 // commonly found in systemCtrl.js
 function _final(err, req, res, next) {
-
   errorHandler.renderErrorPage(res, req, statusCode, i18n, isProd, lang, err)
 }
-
 ```
 
-# Changes in version 6
+## Migrate to Version 6
 
 Here is a small migration guide if your application is build from the node-web template.
 
 Please note when using version 7, the package name must be changed to @kth/kth-node-web-common.
 
-## Include common error messages from the package into your application
+### Include common error messages from the package into your application
 
 In your application, add the following into your `i18n/index.js`
 
@@ -169,20 +166,20 @@ messagesEnglish.messages = { ...messagesEnglish.messages, ...errorMessagesEnglis
 
 ```
 
-## Use the function from the `kth-node-web-common` package in the apllication systemCtrl.js
+### Use the function from the `kth-node-web-common` package in the apllication systemCtrl.js
 
 Do the following changes in your `/server/controller/systemCtrl.js`
 
 1. Include the error handler
 
-```JavaScript
+```javascript
 const errorHandler = require('kth-node-web-common/lib/error')
 ```
 
 2. Remove the `\_getFriendlyErrorMessage` method.
 3. In the `\_final` method, add the following code after the declaration of `lang` variable:
 
-```JavaScript
+```javascript
 // Use error pages from kth-node-web-common based on given parameters.
 errorHandler.renderErrorPage(res, req, statusCode, i18n, isProd, lang, err)
 ```
