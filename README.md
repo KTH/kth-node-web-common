@@ -1,25 +1,5 @@
 # @kth/kth-node-web-common
 
-## Migrate to Version 8
-
-First, make sure your code is up to date with [Migrate to version 6](#migrate-to-version-6)
-
-The error page can now be rendered directly from inside the package. No need to copy and register the Handlebars-file from the app.
-
-If the app only renders the error page via the `renderErrorPage` helper, you can remove lines like below:
-
-```bash
-mkdir -p ./server/views/system ./server/views/layouts
-
-cp ./node_modules/@kth/kth-node-web-common/lib/handlebars/pages/views/ ...
-
-cp ./node_modules/@kth/kth-node-web-common/lib/handlebars/pages/layouts/ ...
-```
-
-They are usually located in `build.sh`, or in the scripts section of `package.json`
-
-⚠️ **Warning** it will still be possible to copy the handlebar files to your applications, but they will no longer be updated, and will probalby be removed in the future. ⚠️
-
 ## Header Content Helpers
 
 This is a set of standard helpers that are useful in most [KTH/node-web](https://github.com/KTH/node-web) projects.
@@ -47,21 +27,17 @@ registerHeaderContentHelper({
 
 Helper to generate breadcrumb markup.
 
-### Import
-
 ```javascript
+// Import the helper
 const { registerBreadcrumbHelper } = require('@kth/kth-node-web-common/lib/handlebars/helpers/breadcrumbs')
-```
 
-### Register
-
-```javascript
+// Register the helper
 registerBreadcrumbHelper()
-```
 
-### Render
+// Use the helper in a template
+{{breadcrumbs breadcrumbsPath}}
 
-```JavaScript
+// Add breadcrumbs to res.render
 res.render(breadcrumbsPath: [{url: 'https://kth.se', label: 'KTH'}, ...], ...)
 ```
 
@@ -140,6 +116,26 @@ function _final(err, req, res, next) {
   errorHandler.renderErrorPage(res, req, statusCode, i18n, isProd, lang, err)
 }
 ```
+
+## Migrate to Version 8
+
+First, make sure your code is up to date with [Migrate to version 6](#migrate-to-version-6)
+
+The error page can now be rendered directly from inside the package. No need to copy and register the Handlebars-file from the app.
+
+If the app only renders the error page via the `renderErrorPage` helper, you can remove lines like below:
+
+```bash
+mkdir -p ./server/views/system ./server/views/layouts
+
+cp ./node_modules/@kth/kth-node-web-common/lib/handlebars/pages/views/ ...
+
+cp ./node_modules/@kth/kth-node-web-common/lib/handlebars/pages/layouts/ ...
+```
+
+They are usually located in `build.sh`, or in the scripts section of `package.json`
+
+⚠️ **Warning** it will still be possible to copy the handlebar files to your applications, but they will no longer be updated, and will probalby be removed in the future. ⚠️
 
 ## Migrate to Version 6
 
