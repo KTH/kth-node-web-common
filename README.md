@@ -117,6 +117,47 @@ function _final(err, req, res, next) {
 }
 ```
 
+## Migrate to Version 9
+
+### Handlebar Helpers
+
+The import of the breadcrumb helper has changed. It is now imported as a named import.
+
+```javascript
+// Usually found in server/views/helpers/index.js
+
+// Old import
+const registerBreadcrumbHelper = require('@kth/kth-node-web-common/lib/handlebars/helpers/breadcrumbs')
+
+// New import
+const { registerBreadcrumbHelper } = require('@kth/kth-node-web-common/lib/handlebars/helpers/breadcrumbs')
+
+// Old register helper
+registerBreadcrumbHelper({
+  proxyPrefixPath: '/app/mount/point',
+  version: 'x.x.x',
+})
+
+// New register helper
+registerBreadcrumbHelper()
+```
+
+The function `registerBreadcrumbHelper` no longer takes any config. All breadcrumbs now need to be manually sent to `res.render` on every request.
+
+```javascript
+// Generic example of how to use the breadcrumb helper in controllers
+const breadcrumbList = [
+  { url: 'https://kth.se', label: 'KTH' },
+  { url: '/en', label: 'International website' },
+]
+
+function index(req, res, next) {
+  res.render('index', {
+    breadcrumbList,
+  })
+}
+```
+
 ## Migrate to Version 8
 
 First, make sure your code is up to date with [Migrate to version 6](#migrate-to-version-6)
