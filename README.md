@@ -40,6 +40,7 @@ Usage in templates:
 - {{ withVersion url }} -- appends `'?v=' + version` to the passed string
 - {{ extend name options }} -- calls the function options.fn with content of block **name** as param and adds it to named block
 - {{ prefixScript url name }} -- add a script tag with version set to script block **name**
+- {{ prefixModuleScript url name }} -- add a script tag with type module and with version set to script block **name**
 - {{ prefixStyle url name media }} -- add a style tag for named media type with version set to style block **name**
 - {{ render name }} -- used by a layout to render script and style blocks in appropriate places
 
