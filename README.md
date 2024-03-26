@@ -63,7 +63,8 @@ route.use('/app/mount/point', require('@kth/kth-node-web-common/lib/web/cortina'
   globalLink: true, // Default false if not set, if true the language link point to the startpage of KTH,
   supportedLanguages: ['sv'], // Optional - set to languges supported - if only one language is supported, globalLink sets to true
   siteNameKey = 'site_name', // Defaults to site_name. This key need to be set in i18n messages file
-  localeTextKey = 'locale_text', // Defaults to locale_text. This key need to be set in i18n messages file
+  localeTextKey = 'locale_text', // Defaults to locale_text. This key need to be set in i18n messages file,
+  useStyle10: true, // Decides which view of the block to fetch. Defaults to false, which uses views tailored for style9
 }))
 ```
 

@@ -2,6 +2,11 @@
 
 All notable changes for major version updates will be documented here.
 
+## 9.2.0
+
+Cortina helper accepts a new parameter `useStyle10` that serves blocks tailored to the new version of KTH-Style.  
+If the parameter is false or missing, blocks tailored for KTH-Style 9 will be fetched.
+
 ## 9.0.0
 
 - **Breaking:** function `registerBreadcrumbHelper` no longer takes any config. All breadcrumbs now need to be manually sent to `res.render` on **every request**.
