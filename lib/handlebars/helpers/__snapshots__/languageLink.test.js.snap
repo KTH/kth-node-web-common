@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`languageLink should return dialog with custom link and default to opposite language label (en -> sv) 1`] = `
+"<a class="kth-menu-item language" hreflang="sv-SE" href="">Svenska</a>
+    <dialog class="kth-translation">
+      <div class="kth-translation__content">
+        <button class="kth-icon-button close">
+          <span class="kth-visually-hidden">Close</span>
+        </button>
+        <span>Den här sidan är inte översatt</span>
+        <a href="https://kth.se/sv">Startsida på svenska</a>
+      </div>
+  </dialog>"
+`;
+
+exports[`languageLink should return dialog with custom link and default to opposite language label (sv -> en) 1`] = `
+"<a class="kth-menu-item language" hreflang="en-US" href="">English</a>
+    <dialog class="kth-translation">
+      <div class="kth-translation__content">
+        <button class="kth-icon-button close">
+          <span class="kth-visually-hidden">Stäng</span>
+        </button>
+        <span>This page is not translated</span>
+        <a href="https://kth.se/en">Start page in English</a>
+      </div>
+  </dialog>"
+`;
+
+exports[`languageLink should return link with query parameter and anchorMessageKey in opposite language (en -> sv) 1`] = `"<a class="kth-menu-item language" hreflang="sv-SE" href="?l=sv">Custom</a>"`;
+
+exports[`languageLink should return link with query parameter and anchorMessageKey in opposite language (sv -> en) 1`] = `"<a class="kth-menu-item language" hreflang="en-US" href="?l=en">Anpassad</a>"`;
+
+exports[`languageLink should return link with query parameter and default to opposite language label (en -> sv) 1`] = `"<a class="kth-menu-item language" hreflang="sv-SE" href="?l=sv">Svenska</a>"`;
+
+exports[`languageLink should return link with query parameter and default to opposite language label (sv -> en) 1`] = `"<a class="kth-menu-item language" hreflang="en-US" href="?l=en">English</a>"`;
