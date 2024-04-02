@@ -105,6 +105,21 @@ Include the handlebars helper in the template.
 {{{languageLink lang}}}
 ```
 
+If no translated page exists, a dialog should be shown on link clink. This can be achieved by passing additional arguments to the helper.
+
+1. The first argument is `lang`, the current language. It is required.
+2. The second argument is `anchorMessageKey`, the i18n key for the anchor element's text. Can be omitted (or pass `null`) for default label.
+3. The third argument is `link`, the URL to navigate to when the anchor is clicked. If provided, a dialog element is also generated.
+4. The fourth argument is `dialogMessageKey`, the i18n key for the dialog element's text. Required if `link` is provided.
+
+```handlebars
+<!-- Typically in server/views/partials/kthHeader.handlebars -->
+
+{{{languageLink lang anchorMessageKey link dialogMessageKey}}}
+```
+
+Use any variable names, only the argument order matters. Remember that they don’t have to have values. The full signature can be used in the handlebars template, with values only being set in the controller when non-default behavior is needed.
+
 ### Common use case
 
 The most common use case is probably that a translated page can be reached by simply adding the query parameter `l`, with a language key like `en`. To achieve this, follow these steps:
