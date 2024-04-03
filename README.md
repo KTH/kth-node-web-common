@@ -60,16 +60,16 @@ registerLanguageLinkHelper()
 
 All language constants are optional.
 
-- `label_lang_[en/sv]`: Default label for the anchor element's text, if a custom one isn’t provided. Remember that it should be displayed in the opposite language, e.g. if the page is in English the label should be _Svenska_
-- `label_button_close`: The label for the close button in the dialog element. Only used if there’s a dialog.
-- `label_not_translated`: The label for the dialog element's text. Only used if there’s a dialog.
+- `language_link_lang_[en/sv]`: Default label for the anchor element's text, if a custom one isn’t provided. Remember that it should be displayed in the opposite language, e.g. if the page is in English the label should be _Svenska_
+- `language_link_button_close`: The label for the close button in the dialog element. Only used if there’s a dialog.
+- `language_link_not_translated`: The label for the dialog element's text. Only used if there’s a dialog.
 
 ```javascript
 // Example in i18n/messages.se.js
 
-label_lang_en: 'English',
-label_not_translated: 'Den här sidan är ej översatt',
-label_button_close: 'Stäng',
+language_link_lang_en: 'English',
+language_link_not_translated: 'Den här sidan är ej översatt',
+language_link_button_close: 'Stäng',
 ```
 
 ### Styling
@@ -126,7 +126,7 @@ The most common use case is probably that a translated page can be reached by si
 
 1. Include the style from KTH Style, `@use '~@kth/style/scss/components/translation-panel';`
 2. Include the handlebars helper in the header partials template, `{{{languageLink lang}}}`
-3. Add `label_lang_sv: 'Svenska'` and `label_lang_en: 'English'` to `messages.en.js` and `messages.sv.js` respectively
+3. Add `language_link_lang_sv: 'Svenska'` and `language_link_lang_en: 'English'` to `messages.en.js` and `messages.sv.js` respectively
 4. Verify that `lang` is passed to `render` in the controller.
 
 A link to the opposite language page will now appear in the head.
