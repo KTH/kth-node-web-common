@@ -124,10 +124,9 @@ Use any variable names, only the argument order matters. Remember that they donâ
 
 The most common use case is probably that a translated page can be reached by simply adding the query parameter `l`, with a language key like `en`. To achieve this, follow these steps:
 
-1. Include the style from KTH Style, `@use '~@kth/style/scss/components/translation-panel';`
-2. Include the handlebars helper in the header partials template, `{{{languageLink lang}}}`
-3. Add `language_link_lang_sv: 'Svenska'` and `language_link_lang_en: 'English'` to `messages.en.js` and `messages.sv.js` respectively
-4. Verify that `lang` is passed to `render` in the controller.
+1. Include the handlebars helper in the header partials template, `{{{languageLink lang}}}`
+2. Add `language_link_lang_sv: 'Svenska'` and `language_link_lang_en: 'English'` to `messages.en.js` and `messages.sv.js` respectively
+3. Verify that `lang` is passed to `render` in the controller.
 
 A link to the opposite language page will now appear in the head.
 
