@@ -24,6 +24,22 @@ registerHeaderContentHelper({
 - {{ render name }} -- used by a layout to render script and style blocks in appropriate places
 - {{ withVersion url }} -- appends `'?v=' + version` to the passed string
 
+## Conditional Logotype Src Helper
+
+A helper that dynamically renders the logotype's source path, avoiding the use of multiple image tags by setting the correct source path through server-side logic.
+
+```javascript
+// Import the helper
+const { registerConditionalLogotypeSrc } = require('@kth/kth-node-web-common/lib/handlebars/helpers/conditionalLogotypeSrc')
+
+// Register the helper
+registerConditionalLogotypeSrc()
+
+// Use the helper in a template
+{{conditionalLogotypeSrc theme proxyPrefix}}
+
+```
+
 ## Breadcrumb Helper
 
 Helper to generate breadcrumb markup.
