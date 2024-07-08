@@ -50,10 +50,10 @@ A helper that dynamically renders the logotype's source path, avoiding the use o
 
 ```javascript
 // Import the helper
-const { registerConditionalLogotypeSrc } = require('@kth/kth-node-web-common/lib/handlebars/helpers/conditionalLogotypeSrc')
+const { registerConditionalLogotypeSrcHelper } = require('@kth/kth-node-web-common/lib/handlebars/helpers/conditionalLogotypeSrc')
 
 // Register the helper
-registerConditionalLogotypeSrc()
+registerConditionalLogotypeSrcHelper()
 
 // Use the helper in a template
 {{conditionalLogotypeSrc theme proxyPrefix}}
