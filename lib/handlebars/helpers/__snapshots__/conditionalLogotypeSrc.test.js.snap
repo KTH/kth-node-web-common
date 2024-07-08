@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`conditionalLogotypeSrc should return logotype-blue.svg for intranet theme 1`] = `"/prefix/assets/logotype/logotype-blue.svg"`;
+
+exports[`conditionalLogotypeSrc should return logotype-blue.svg for student-web theme 1`] = `"/prefix/assets/logotype/logotype-blue.svg"`;
+
+exports[`conditionalLogotypeSrc should return logotype-white.svg for external theme 1`] = `"/prefix/assets/logotype/logotype-white.svg"`;
