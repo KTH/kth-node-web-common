@@ -1,6 +1,6 @@
 {
   "name": "@kth/kth-node-web-common",
-  "version": "8.4.2",
+  "version": "8.5.0",
   "description": "Common components for node-web projects",
   "scripts": {
     "test": "jest",
