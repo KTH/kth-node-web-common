@@ -43,7 +43,6 @@ Usage in templates:
 - {{ prefixModuleScript url name }} -- add a script tag with type module and with version set to script block **name**
 - {{ prefixStyle url name media }} -- add a style tag for named media type with version set to style block **name**
 - {{ render name }} -- used by a layout to render script and style blocks in appropriate places
-- {{ withVersion url }} -- appends `'?v=' + version` to the passed string
 
 ## Conditional Logotype Src Helper
 
