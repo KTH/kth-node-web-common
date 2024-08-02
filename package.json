@@ -31,7 +31,7 @@
   "dependencies": {
     "@kth/cortina-block": "^5.1.1",
     "@kth/log": "^4.0.7",
-    "entities": "^2.2.0",
+    "entities": "^5.0.0",
     "handlebars": "^4.7.8",
     "kth-node-i18n": "^1.0.18",
     "kth-node-redis": "^3.3.0",
