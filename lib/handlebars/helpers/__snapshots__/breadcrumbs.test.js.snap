@@ -3,9 +3,9 @@
 exports[`getBreadcrumbsMarkup should generate breadcrumbs HTML for a valid path list in English 1`] = `
 "
   <nav id="breadcrumbs" aria-label="Breadcrumbs" class="kth-breadcrumbs">
-    <ul class="kth-breadcrumbs__list">
+    <ol class="kth-breadcrumbs__list">
       <li><a href="/">Kth</a></li><li><a href="/test1">Test 1</a></li><li><a href="/test2">Test 2</a></li>
-    </ul>
+    </ol>
   </nav>
 "
 `;
@@ -13,9 +13,9 @@ exports[`getBreadcrumbsMarkup should generate breadcrumbs HTML for a valid path 
 exports[`getBreadcrumbsMarkup should generate breadcrumbs HTML for a valid path list in Swedish 1`] = `
 "
   <nav id="breadcrumbs" aria-label="Brödsmulor" class="kth-breadcrumbs">
-    <ul class="kth-breadcrumbs__list">
+    <ol class="kth-breadcrumbs__list">
       <li><a href="/">Kth</a></li><li><a href="/test1">Test 1</a></li><li><a href="/test2">Test 2</a></li>
-    </ul>
+    </ol>
   </nav>
 "
 `;
