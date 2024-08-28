@@ -56,6 +56,9 @@ registerBreadcrumbHelper()
 
 // Add breadcrumbs to res.render
 res.render(breadcrumbsPath: [{url: 'https://kth.se', label: 'KTH'}, ...], ...)
+
+// Import the needed css from @kth/style
+@use '@kth/style/scss/components/breadcrumbs.scss';
 ```
 
 ## Language Link Helper

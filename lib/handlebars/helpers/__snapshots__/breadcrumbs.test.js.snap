@@ -2,9 +2,9 @@
 
 exports[`getBreadcrumbsMarkup should generate breadcrumbs HTML for a valid path list in English 1`] = `
 "
-  <nav id="breadcrumbs" aria-label="Breadcrumbs" class="col-12 col-md-9">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="/">Kth</a></li><li class="breadcrumb-item"><a href="/test1">Test 1</a></li><li class="breadcrumb-item"><a href="/test2">Test 2</a></li>
+  <nav id="breadcrumbs" aria-label="Breadcrumbs" class="kth-breadcrumbs">
+    <ol class="kth-breadcrumbs__list">
+      <li><a href="/">Kth</a></li><li><a href="/test1">Test 1</a></li><li><a href="/test2">Test 2</a></li>
     </ol>
   </nav>
 "
@@ -12,9 +12,9 @@ exports[`getBreadcrumbsMarkup should generate breadcrumbs HTML for a valid path 
 
 exports[`getBreadcrumbsMarkup should generate breadcrumbs HTML for a valid path list in Swedish 1`] = `
 "
-  <nav id="breadcrumbs" aria-label="Brödsmulor" class="col-12 col-md-9">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="/">Kth</a></li><li class="breadcrumb-item"><a href="/test1">Test 1</a></li><li class="breadcrumb-item"><a href="/test2">Test 2</a></li>
+  <nav id="breadcrumbs" aria-label="Brödsmulor" class="kth-breadcrumbs">
+    <ol class="kth-breadcrumbs__list">
+      <li><a href="/">Kth</a></li><li><a href="/test1">Test 1</a></li><li><a href="/test2">Test 2</a></li>
     </ol>
   </nav>
 "
