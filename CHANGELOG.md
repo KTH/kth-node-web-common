@@ -2,6 +2,10 @@
 
 All notable changes for major version updates will be documented here.
 
+## 8.5.2
+
+Add deprecation warning for cortinaBlock wrapper
+
 ## 8.3.0
 
 Cortina helper accepts a new parameter `useStyle10` that serves blocks tailored to the new version of KTH-Style.  
