@@ -151,6 +151,9 @@ A link to the opposite language page will now appear in the head.
 
 ## Cortina Blocks
 
+**⚠️ This wrapper is deprecated and will be removed ⚠️**  
+Please use `@kth/cortina-block` as a direct dependency instead.
+
 Express middleware to fetch Cortina CMS blocks for requests with layouts requiring them:
 
 Uses https://github.com/kth/cortina-block
