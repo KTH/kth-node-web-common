@@ -2,6 +2,12 @@
 
 All notable changes for major version updates will be documented here.
 
+## 9.6.0
+
+### Changed
+
+- 404 error page no longer logs a full stacktrace
+
 ## 9.5.1
 
 Add deprecation warning for cortinaBlock wrapper
