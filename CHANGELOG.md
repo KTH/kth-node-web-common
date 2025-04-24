@@ -2,6 +2,10 @@
 
 All notable changes for major version updates will be documented here.
 
+## 9.6.1
+
+Add deprecation warning for safe handlebar helper
+
 ## 9.6.0
 
 ### Changed
