@@ -149,35 +149,6 @@ The most common use case is probably that a translated page can be reached by si
 
 A link to the opposite language page will now appear in the head.
 
-## Cortina Blocks
-
-**⚠️ This wrapper is deprecated and will be removed ⚠️**  
-Please use `@kth/cortina-block` as a direct dependency instead.
-
-Express middleware to fetch Cortina CMS blocks for requests with layouts requiring them:
-
-Uses https://github.com/kth/cortina-block
-
-```JavaScript
-route.use('/app/mount/point', require('@kth/kth-node-web-common/lib/web/cortina')({
-  blockUrl: 'https://url.to/fetch/block',
-  headers: {  // Optional way of passing headers to kth-node-cortina-block request
-    'User-Agent': 'something...'
-  },
-  addBlocks: {  // Optional way of adding Cortina blocks on top of defaults
-    menu: '1.678435'
-  },
-  proxyPrefixPath: '/app/mount/point',
-  hostUrl: 'http://server_host:port',
-  redisConfig: { ... }, // Optional redis config object, see kth-node-configuration.
-  globalLink: true, // Default false if not set, if true the language link point to the startpage of KTH,
-  supportedLanguages: ['sv'], // Optional - set to languges supported - if only one language is supported, globalLink sets to true
-  siteNameKey = 'site_name', // Defaults to site_name. This key need to be set in i18n messages file
-  localeTextKey = 'locale_text', // Defaults to locale_text. This key need to be set in i18n messages file,
-  useStyle10: true, // Decides which view of the block to fetch. Defaults to false, which uses views tailored for style9
-}))
-```
-
 ## Crawler Redirect
 
 Middleware to handle redirects for crawlers.

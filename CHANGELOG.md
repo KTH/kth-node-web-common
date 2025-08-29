@@ -6,6 +6,7 @@ All notable changes for major version updates will be documented here.
 
 ### Removed
 
+- Cortina middleware. Replaced by standalone packet `@kth/cortina-block`.
 - Helper contentedit. Often imported in `server/views/helpers/index.js`.
 - Helper safe. Often imported in `server/views/helpers/index.js`.
 - Helper toJSON.
