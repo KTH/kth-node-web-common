@@ -180,16 +180,36 @@ const lang = language.getLanguage(res)
 
 ```
 
-## Error Page
+## Error Pages
 
 There is a helper for rendering error pages with proper styling
 
 To use it, the following must be configured:
 
 - [Register handlebar helpers](#handlebar-helpers)
-- [Include error messages](#include-common-error-messages-from-the-package-into-your-application)
 
-Then, import the helper and use as a [final](#use-the-function-from-the-kth-node-web-common-package-in-the-apllication-systemctrljs) method to express
+### Include common error messages from the package into your application
+
+In your application, add the following into your `i18n/index.js`
+
+```JavaScript
+// Include error messages from kth-node-web-common package
+const errorMessagesEnglish = require('kth-node-web-common/lib/i18n/errorMessages.en')
+const errorMessagesSwedish = require('kth-node-web-common/lib/i18n/errorMessages.sv')
+
+// Include application messasges
+const messagesEnglish = require('./messages.en')
+const messagesSwedish = require('./messages.se')
+
+// Add the error messages to the application defined messages before pushing them.
+messagesSwedish.messages = { ...messagesSwedish.messages, ...errorMessagesSwedish.messages }
+messagesEnglish.messages = { ...messagesEnglish.messages, ...errorMessagesEnglish.messages }
+
+```
+
+### Import helpers
+
+Import the helper and use as a [final](#use-the-function-from-the-kth-node-web-common-package-in-the-apllication-systemctrljs) method to express
 
 ```javascript
 const errorHandler = require('kth-node-web-common/lib/error')
@@ -260,49 +280,3 @@ cp ./node_modules/@kth/kth-node-web-common/lib/handlebars/pages/layouts/ ...
 They are usually located in `build.sh`, or in the scripts section of `package.json`
 
 ⚠️ **Warning** it will still be possible to copy the handlebar files to your applications, but they will no longer be updated, and will probalby be removed in the future. ⚠️
-
-## Migrate to Version 6
-
-Here is a small migration guide if your application is build from the node-web template.
-
-Please note when using version 7, the package name must be changed to @kth/kth-node-web-common.
-
-### Include common error messages from the package into your application
-
-In your application, add the following into your `i18n/index.js`
-
-```JavaScript
-// Include error messages from kth-node-web-common package
-const errorMessagesEnglish = require('kth-node-web-common/lib/i18n/errorMessages.en')
-const errorMessagesSwedish = require('kth-node-web-common/lib/i18n/errorMessages.sv')
-
-// Include application messasges
-const messagesEnglish = require('./messages.en')
-const messagesSwedish = require('./messages.se')
-
-// Add the error messages to the application defined messages before pushing them.
-messagesSwedish.messages = { ...messagesSwedish.messages, ...errorMessagesSwedish.messages }
-messagesEnglish.messages = { ...messagesEnglish.messages, ...errorMessagesEnglish.messages }
-
-```
-
-### Use the function from the `kth-node-web-common` package in the apllication systemCtrl.js
-
-Do the following changes in your `/server/controller/systemCtrl.js`
-
-1. Include the error handler
-
-```javascript
-const errorHandler = require('kth-node-web-common/lib/error')
-```
-
-2. Remove the `\_getFriendlyErrorMessage` method.
-3. In the `\_final` method, add the following code after the declaration of `lang` variable:
-
-```javascript
-// Use error pages from kth-node-web-common based on given parameters.
-errorHandler.renderErrorPage(res, req, statusCode, i18n, isProd, lang, err)
-```
-
-3. Remove the switch and `res.format` code.
-4. Remove unused error labels the messages files `/i18n/messages.en.js` and `/i18n/messages.sv.js`
