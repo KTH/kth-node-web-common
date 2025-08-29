@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`getBreadcrumbsMarkup should generate breadcrumbs HTML for a valid path list in English 1`] = `
 "
