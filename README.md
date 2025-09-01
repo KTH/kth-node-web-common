@@ -103,14 +103,17 @@ Make sure to include styling from KTH Style.
 
 ### Initialize menu panel
 
-Make sure to initialize the menu panel (dialog). _This might be moved to KTH Style._
+Make sure to initialize the menu panel (dialog).
 
-```javascript
+```html
 // Typically in server/views/layouts/publicLayout.handlebars
 
 <script type="module">
-  import {MenuPanel} from '{{ proxyPrefix }}/assets/js/index.js' MenuPanel.initTranslationModal(
-  document.querySelector(".kth-menu-item.language"), document.querySelector(".kth-translation") )
+  import { MenuPanel } from '{{proxyPrefix}}/assets/js/index.js'
+  MenuPanel.initTranslationModal(
+    document.querySelector('.kth-menu-item.language'),
+    document.querySelector('.kth-translation')
+  )
 </script>
 ```
 
