@@ -2,6 +2,15 @@
 
 All notable changes for major version updates will be documented here.
 
+## 10.0.0
+
+### Removed
+
+- Cortina middleware. Replaced by standalone packet `@kth/cortina-block`.
+- Helper contentedit. Often imported in `server/views/helpers/index.js`.
+- Helper safe. Often imported in `server/views/helpers/index.js`.
+- Helper toJSON.
+
 ## 9.6.1
 
 Add deprecation warning for safe handlebar helper

@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`languageLink should return dialog with custom link and default to opposite language label (en -> sv) 1`] = `
 "<a class="kth-menu-item language" hreflang="sv-SE" href="">Svenska</a>

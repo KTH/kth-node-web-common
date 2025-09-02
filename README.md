@@ -103,14 +103,17 @@ Make sure to include styling from KTH Style.
 
 ### Initialize menu panel
 
-Make sure to initialize the menu panel (dialog). _This might be moved to KTH Style._
+Make sure to initialize the menu panel (dialog).
 
-```javascript
+```html
 // Typically in server/views/layouts/publicLayout.handlebars
 
 <script type="module">
-  import {MenuPanel} from '{{ proxyPrefix }}/assets/js/index.js' MenuPanel.initTranslationModal(
-  document.querySelector(".kth-menu-item.language"), document.querySelector(".kth-translation") )
+  import { MenuPanel } from '{{proxyPrefix}}/assets/js/index.js'
+  MenuPanel.initTranslationModal(
+    document.querySelector('.kth-menu-item.language'),
+    document.querySelector('.kth-translation')
+  )
 </script>
 ```
 
@@ -149,35 +152,6 @@ The most common use case is probably that a translated page can be reached by si
 
 A link to the opposite language page will now appear in the head.
 
-## Cortina Blocks
-
-**⚠️ This wrapper is deprecated and will be removed ⚠️**  
-Please use `@kth/cortina-block` as a direct dependency instead.
-
-Express middleware to fetch Cortina CMS blocks for requests with layouts requiring them:
-
-Uses https://github.com/kth/cortina-block
-
-```JavaScript
-route.use('/app/mount/point', require('@kth/kth-node-web-common/lib/web/cortina')({
-  blockUrl: 'https://url.to/fetch/block',
-  headers: {  // Optional way of passing headers to kth-node-cortina-block request
-    'User-Agent': 'something...'
-  },
-  addBlocks: {  // Optional way of adding Cortina blocks on top of defaults
-    menu: '1.678435'
-  },
-  proxyPrefixPath: '/app/mount/point',
-  hostUrl: 'http://server_host:port',
-  redisConfig: { ... }, // Optional redis config object, see kth-node-configuration.
-  globalLink: true, // Default false if not set, if true the language link point to the startpage of KTH,
-  supportedLanguages: ['sv'], // Optional - set to languges supported - if only one language is supported, globalLink sets to true
-  siteNameKey = 'site_name', // Defaults to site_name. This key need to be set in i18n messages file
-  localeTextKey = 'locale_text', // Defaults to locale_text. This key need to be set in i18n messages file,
-  useStyle10: true, // Decides which view of the block to fetch. Defaults to false, which uses views tailored for style9
-}))
-```
-
 ## Crawler Redirect
 
 Middleware to handle redirects for crawlers.
@@ -209,16 +183,36 @@ const lang = language.getLanguage(res)
 
 ```
 
-## Error Page
+## Error Pages
 
 There is a helper for rendering error pages with proper styling
 
 To use it, the following must be configured:
 
 - [Register handlebar helpers](#handlebar-helpers)
-- [Include error messages](#include-common-error-messages-from-the-package-into-your-application)
 
-Then, import the helper and use as a [final](#use-the-function-from-the-kth-node-web-common-package-in-the-apllication-systemctrljs) method to express
+### Include common error messages from the package into your application
+
+In your application, add the following into your `i18n/index.js`
+
+```JavaScript
+// Include error messages from kth-node-web-common package
+const errorMessagesEnglish = require('kth-node-web-common/lib/i18n/errorMessages.en')
+const errorMessagesSwedish = require('kth-node-web-common/lib/i18n/errorMessages.sv')
+
+// Include application messasges
+const messagesEnglish = require('./messages.en')
+const messagesSwedish = require('./messages.se')
+
+// Add the error messages to the application defined messages before pushing them.
+messagesSwedish.messages = { ...messagesSwedish.messages, ...errorMessagesSwedish.messages }
+messagesEnglish.messages = { ...messagesEnglish.messages, ...errorMessagesEnglish.messages }
+
+```
+
+### Import helpers
+
+Import the helper and use as a [final](#use-the-function-from-the-kth-node-web-common-package-in-the-apllication-systemctrljs) method to express
 
 ```javascript
 const errorHandler = require('kth-node-web-common/lib/error')
@@ -289,49 +283,3 @@ cp ./node_modules/@kth/kth-node-web-common/lib/handlebars/pages/layouts/ ...
 They are usually located in `build.sh`, or in the scripts section of `package.json`
 
 ⚠️ **Warning** it will still be possible to copy the handlebar files to your applications, but they will no longer be updated, and will probalby be removed in the future. ⚠️
-
-## Migrate to Version 6
-
-Here is a small migration guide if your application is build from the node-web template.
-
-Please note when using version 7, the package name must be changed to @kth/kth-node-web-common.
-
-### Include common error messages from the package into your application
-
-In your application, add the following into your `i18n/index.js`
-
-```JavaScript
-// Include error messages from kth-node-web-common package
-const errorMessagesEnglish = require('kth-node-web-common/lib/i18n/errorMessages.en')
-const errorMessagesSwedish = require('kth-node-web-common/lib/i18n/errorMessages.sv')
-
-// Include application messasges
-const messagesEnglish = require('./messages.en')
-const messagesSwedish = require('./messages.se')
-
-// Add the error messages to the application defined messages before pushing them.
-messagesSwedish.messages = { ...messagesSwedish.messages, ...errorMessagesSwedish.messages }
-messagesEnglish.messages = { ...messagesEnglish.messages, ...errorMessagesEnglish.messages }
-
-```
-
-### Use the function from the `kth-node-web-common` package in the apllication systemCtrl.js
-
-Do the following changes in your `/server/controller/systemCtrl.js`
-
-1. Include the error handler
-
-```javascript
-const errorHandler = require('kth-node-web-common/lib/error')
-```
-
-2. Remove the `\_getFriendlyErrorMessage` method.
-3. In the `\_final` method, add the following code after the declaration of `lang` variable:
-
-```javascript
-// Use error pages from kth-node-web-common based on given parameters.
-errorHandler.renderErrorPage(res, req, statusCode, i18n, isProd, lang, err)
-```
-
-3. Remove the switch and `res.format` code.
-4. Remove unused error labels the messages files `/i18n/messages.en.js` and `/i18n/messages.sv.js`
