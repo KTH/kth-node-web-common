@@ -21,7 +21,8 @@
   ],
   "author": {
     "name": "KTH",
-    "email": "infosys@kth.se"
+    "email": "infosys@kth.se",
+    "url": "https://github.com/KTH"
   },
   "license": "MIT",
   "bugs": {
