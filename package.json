@@ -3,10 +3,10 @@
   "version": "10.0.1",
   "description": "Common components for node-web projects",
   "scripts": {
+    "lint": "eslint --quiet",
+    "lint-v": "eslint",
     "test": "jest",
     "test:watch": "jest --watch",
-    "lint": "eslint . --quiet",
-    "lint-v": "eslint .",
     "build": "echo \"No build step required\"",
     "prepare": "husky"
   },
