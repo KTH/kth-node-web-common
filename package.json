@@ -25,13 +25,13 @@
     "url": "https://github.com/KTH"
   },
   "license": "MIT",
+  "engines": {
+    "node": ">=24"
+  },
   "bugs": {
     "url": "https://github.com/KTH/kth-node-web-common/issues"
   },
   "homepage": "https://github.com/KTH/kth-node-web-common#readme",
-  "engines": {
-    "node": ">=20.0.0"
-  },
   "dependencies": {
     "@kth/log": "^4.0.8",
     "handlebars": "^4.7.9",
