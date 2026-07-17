@@ -25,6 +25,22 @@
     "url": "https://github.com/KTH"
   },
   "license": "MIT",
+  "files": [
+    "lib/error.js",
+    "lib/errorTemplate.handlebars",
+    "lib/language.js",
+    "lib/i18n/**",
+    "lib/web/**",
+    "lib/handlebars/helpers/breadcrumbs.js",
+    "lib/handlebars/helpers/conditionalLogotypeSrc.js",
+    "lib/handlebars/helpers/createI18nHelper.js",
+    "lib/handlebars/helpers/headerContent.js",
+    "lib/handlebars/helpers/languageLink.js",
+    "lib/handlebars/pages/**/*.handlebars",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
   "engines": {
     "node": ">=24"
   },

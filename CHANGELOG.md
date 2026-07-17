@@ -2,6 +2,18 @@
 
 All notable changes for major version updates will be documented here.
 
+## 11.0.0
+
+### Breaking
+
+- `kth-node-i18n` is now a `peerDependency` and must be installed by consuming applications
+- Requires Node.js `>=24`
+
+### Notable changes
+
+- Updated i18n dependency model to reduce the risk of multiple `kth-node-i18n` runtime instances in applications
+- Restricted npm publish contents via `files` in `package.json` to include runtime assets only
+
 ## 10.0.0
 
 ### Removed
