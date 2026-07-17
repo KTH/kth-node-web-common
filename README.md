@@ -1,5 +1,13 @@
 # @kth/kth-node-web-common
 
+## Peer Dependency
+
+This package expects the consuming application to provide `kth-node-i18n`.
+
+```bash
+npm install kth-node-i18n
+```
+
 ## Header Content Helpers
 
 This is a set of standard helpers that are useful in most [KTH/node-web](https://github.com/KTH/node-web) projects.

@@ -35,17 +35,20 @@
   "dependencies": {
     "@kth/log": "^4.0.8",
     "handlebars": "^4.7.9",
-    "kth-node-i18n": "^1.0.18",
     "locale": "^0.1.0"
+  },
+  "peerDependencies": {
+    "kth-node-i18n": ">=1.0.18 <3"
   },
   "devDependencies": {
     "@kth/eslint-config-kth": "^3.7.0",
     "@types/jest": "^30.0.0",
     "eslint": "^8.57.1",
     "husky": "^9.1.7",
-    "jest": "^30.3.0",
+    "jest": "^30.4.2",
+    "kth-node-i18n": "^2.0.0",
     "lint-staged": "^15.5.2",
-    "prettier": "^3.8.2"
+    "prettier": "^3.9.5"
   },
   "prettier": {
     "arrowParens": "avoid",
