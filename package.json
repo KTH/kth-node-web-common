@@ -41,9 +41,9 @@
     "kth-node-i18n": ">=2.0.1 <3"
   },
   "devDependencies": {
-    "@kth/eslint-config-kth": "^3.7.0",
+    "@kth/eslint-config-kth": "^4.1.0",
     "@types/jest": "^30.0.0",
-    "eslint": "^8.57.1",
+    "eslint": "^9.39.5",
     "husky": "^9.1.7",
     "jest": "^30.4.2",
     "kth-node-i18n": "^2.0.1",
