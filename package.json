@@ -1,6 +1,6 @@
 {
   "name": "@kth/kth-node-web-common",
-  "version": "11.0.0",
+  "version": "11.0.1",
   "description": "Common components for node-web projects",
   "scripts": {
     "lint": "eslint --quiet",
