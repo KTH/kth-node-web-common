@@ -50,7 +50,7 @@
   "homepage": "https://github.com/KTH/kth-node-web-common#readme",
   "dependencies": {
     "@kth/log": "^4.0.8",
-    "handlebars": "^4.7.9",
+    "handlebars": "^4.7.10",
     "locale": "^0.1.0"
   },
   "peerDependencies": {
@@ -61,10 +61,10 @@
     "@types/jest": "^30.0.0",
     "eslint": "^9.39.5",
     "husky": "^9.1.7",
-    "jest": "^30.4.2",
+    "jest": "^30.5.2",
     "kth-node-i18n": "^2.0.1",
-    "lint-staged": "^17.0.8",
-    "prettier": "^3.9.5"
+    "lint-staged": "^17.6.0",
+    "prettier": "^3.9.10"
   },
   "prettier": {
     "arrowParens": "avoid",
